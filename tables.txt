@@ -1,0 +1,10 @@
+users: id, details
+issues: id, title, summary, image
+challenges: id, statement
+challenges_issues: issueId, challengeId
+projects: id, challengeId, title, abstract, status(public/private), created, modified
+->(Why Makeathon): id, projectId, content
+requirements: id, projectId, name
+user_projects: id, userId, projectId, 
+mentors: id, userId, projectId
+solutions: id, projectId, status(proposed/implemented)
