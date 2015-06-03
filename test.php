@@ -1,7 +1,7 @@
 <?php 
 require_once 'include/php/connect.php';
 require_once 'ProjectClass.php';
-require 'sessionCheck.php'
+require 'sessionCheck.php';
 ?>
 <html>
 <head>
