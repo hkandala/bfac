@@ -4,21 +4,6 @@
 	height: 35% !important;
 	background-size: cover;
 }
-@font-face
-{
-	font-family: "os-l";
-	src:url('../../fonts/OpenSans-Light.ttf');
-}
-@font-face
-{
-	font-family: "os-r";
-	src:url('../../fonts/OpenSans-Regular.ttf');
-}
-@font-face
-{
-	font-family: "os-b";
-	src:url('../../fonts/OpenSans-Semibold.ttf');
-}
 #main-body-container
 {
 min-height:450px !important;
@@ -110,14 +95,6 @@ body
 {
 	background-size: cover;
 }
-.logo
-{
-	background: url('../../textures/logo.png');
-	height: 100%;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 47% 0px;
-}
 .cloud-up
 {
 	background-image: url('../../textures/cloud.png');
@@ -168,7 +145,7 @@ body
 {
 	margin-top: 3.5% !important;
 }
-.menu-button
+/*.menu-button
 {
 	font-family: "os-l";
 	color:#fff;
@@ -182,14 +159,14 @@ body
 	border-radius: 4px !important;
 	text-shadow: 0px 0px 10px #222222;
 
-}
+}*/
 .selected
 {
 	text-shadow:none;
 	color: #9fc500;
 	background-color: #fff !important;	
 }
-.menu-button:focus
+/*.menu-button:focus
 {
 	text-shadow:none;
 	color: #9fc500;
@@ -199,7 +176,7 @@ body
 .menu-button:hover
 {
 	color:#9fc500;
-}
+}*/
 .timer-title
 {
 	font-family: "os-r";
@@ -539,7 +516,6 @@ body
     padding: 2px;
     background-repeat: no-repeat;
     display: inline-block;
-    background: url('textures/logout.png');
   }
   .side-button-container
   {
@@ -632,12 +608,10 @@ height:8px;
 -moz-animation-name:bounce_followingBallsG;
 -moz-animation-duration:1.3s;
 -moz-animation-iteration-count:infinite;
--moz-animation-direction:linear;
 -webkit-border-radius:4px;
 -webkit-animation-name:bounce_followingBallsG;
 -webkit-animation-duration:1.3s;
 -webkit-animation-iteration-count:infinite;
--webkit-animation-direction:linear;
 -ms-border-radius:4px;
 -ms-animation-name:bounce_followingBallsG;
 -ms-animation-duration:1.3s;
@@ -647,12 +621,10 @@ height:8px;
 -o-animation-name:bounce_followingBallsG;
 -o-animation-duration:1.3s;
 -o-animation-iteration-count:infinite;
--o-animation-direction:linear;
 border-radius:4px;
 animation-name:bounce_followingBallsG;
 animation-duration:1.3s;
 animation-iteration-count:infinite;
-animation-direction:linear;
 }
 
 #followingBallsG_1{
@@ -824,7 +796,7 @@ background-color:#60bb46;
 }
 .countdown_section
 {
-	width: 30 % !important;
+	width: 30% !important;
 	font-size: 0.6em !important;
 }
 .sponsor-image

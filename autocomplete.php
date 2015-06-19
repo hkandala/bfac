@@ -1,14 +1,10 @@
 <?php
 require_once './include/php/connect.php';
-/**
- * Script for the autocompletion in jQuery Plugin tagedit.
- *
- * @author Oliver Albrecht <info@webwork-albrecht.de>
- */
+
 $res = $GLOBALS['db']->raw("SELECT * FROM threads");
 $autocompletiondata = array();
-while($row=$res->fetch_assoc())
-{
+
+while($row=$res->fetch_assoc()) {
 	$autocompletiondata[$row['ThreadId']] = $row['Label']; 
 }
 
@@ -22,4 +18,3 @@ if(isset($_GET['term'])) {
     
     echo "[".implode(',', $result)."]";
 }
-?>

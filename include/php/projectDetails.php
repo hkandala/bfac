@@ -3,6 +3,7 @@ require_once 'UserClass.php';
 require_once 'ThreadClass.php';
 require_once 'ProjectClass.php';
 require_once 'postClass.php';
+
 session_start();
 if(!isset($_SESSION['curUser']))
 {
@@ -41,5 +42,3 @@ if(isset($_GET["id"]))
 	echo "<br><br>";
 	echo "<input type=\"text\" id=\"newpost-text\"><button id=\"project-main-button\" onclick=\"addPost()\" projectid=\"".$_GET["id"]."\">Create New Post</button>";
 }
-
-?>

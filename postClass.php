@@ -2,6 +2,7 @@
 require_once 'UserClass.php';
 require_once 'ThreadClass.php';
 require_once 'ProjectClass.php';
+
 class projectPost
 {
 	function insertPost($UserId,$Heading,$projectId)
@@ -28,4 +29,3 @@ class projectPost
 	}
 	
 }
-?>

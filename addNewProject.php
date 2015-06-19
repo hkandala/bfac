@@ -1,12 +1,11 @@
 <?php
-require_once 'include/php/connect.php';
-require_once 'ProjectClass.php';
-require_once 'UserClass.php';
-require_once 'AllClass.php';
-require "sessionCheck.php";
-$allObj = new All;
+    require_once 'include/php/connect.php';
+    require_once 'ProjectClass.php';
+    require_once 'UserClass.php';
+    require_once 'AllClass.php';
+    require "sessionCheck.php";
+    $allObj = new All;
 ?>
-
 <script>
     $(document).ready(function(e){
         $("#tagform-editonly" ).find('input.tag').tagedit({

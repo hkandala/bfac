@@ -23,6 +23,7 @@ function newProject() {
     
   });
 }
+
 function loadAllProjects() {
 	$.ajax({
     url: 'loadAllProjects.php',
@@ -61,4 +62,3 @@ function newProjectCheck() {
     
   });
 }
-

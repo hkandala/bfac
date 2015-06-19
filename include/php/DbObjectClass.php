@@ -1,24 +1,19 @@
 <?php
-
-class DbObject
-{
-       var $db;
-
+class DbObject {
+    var $db;
 	var $host;
 	var $user;
 	var $pass;
 	var $dbname;
 
-	function __construct($host,$user,$pass,$dbname)
-	{
+	function __construct($host,$user,$pass,$dbname) {
 		$this->host = $host;
 		$this->user = $user;
 		$this->pass = $pass;
 		$this->dbname = $dbname;
 	}
 	
-	function connect()
-	{
+	function connect() {
 		$this->db = new mysqli("$this->host","$this->user","$this->pass","$this->dbname");
 		if(mysqli_connect_errno())
 		{
@@ -28,27 +23,22 @@ class DbObject
 		
 	}
 	
-	function selectDB($dbname)
-	{
+	function selectDB($dbname) {
 		$this->dbname = $dbname;
 		$this->db->select_db($dbname);
 	}
 	
-	function convert($param)
-	{
-		if(sizeof($param) == 1)
-		{
+	function convert($param) {
+		if(sizeof($param) == 1)  {
 			$result = $param;
-		}
-		
-		else
-		{
+		} else {
 			$result = join("',",$param);
 		}
+
 		return $result;
 	}
-	function select($what, $table, $key, $value)
-	{
+
+	function select($what, $table, $key, $value) {
 		$values = $this->convert($value);
 		$whats = $this->convert($what);
 		$tables = $this->convert($table);
@@ -57,43 +47,31 @@ class DbObject
 		$result = $this->db->query($query);
 		return $result;
 	}
-	function delete($table, $key, $value)
-	{
+
+	function delete($table, $key, $value) {
 		$values = $this->convert($value);
 		
 		$query = "DELETE FROM ".$table." WHERE ".$key." IN (".$values.")";
 		$result = $this->db->query($query);
-		
 		return $result;
 	}
-	function insert($table, $key, $value)
-	{
-		if(sizeof($key) != sizeof($value))
-		{
+
+	function insert($table, $key, $value) {
+		if(sizeof($key) != sizeof($value)) {
 			$result = null;
-		}
-		else
-		{
+		} else {
 			$values = $this->convert($value);
 			$keys = $this->convert($key);
 			
 			$query = "INSERT INTO ".$table." (".$keys.") VALUES (".$values.")";
-			print_r($query);
 			$result = $this->db->query($query);
 		}
+
 		return $result;
 	}
 	
-	function raw($query)
-	{
+	function raw($query) {
 		$result = $this->db->query($query);
-
 		return $result;
 	}
-
-	
-	
-	
-}	
-		
-?>
+}
