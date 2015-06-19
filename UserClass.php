@@ -1,6 +1,7 @@
 <?php
 require_once 'include/php/connect.php';
 require_once 'ProjectClass.php';
+
 class User
 {
 	public $id;
@@ -13,19 +14,18 @@ class User
 	public $phoneno;
 	
 	
-	function _constructor()
-	{
+	function _constructor() {
 		$id = null;
 	}
-	function copyUser($a)
-	{
+
+    function copyUser($a) {
 		$this->id = $a->id;
 		$this->name = $a->name;
 		$this->email = $a->email;
 		$this->pass = $a->pass;
 	}
-	function newUser( $name, $email, $pass , $college , $branch , $phoneno)
-	{
+
+    function newUser( $name, $email, $pass , $college , $branch , $phoneno) {
 		$this->name = $name;
 		$this->email = $email;
 		$this->pass = $pass;
@@ -33,47 +33,38 @@ class User
 		$this->branch = $branch;
 		$this->phoneno = $phoneno;
 	}
-	function updateStatus($no)
-	{
+
+	function updateStatus($no) {
 		$this->status = $no;
 		//Update User_Project Table
 	}
 	
-	function addProject($projectId, $status)
-	{
+	function addProject($projectId, $status) {
 		$GLOBALS['db']->insert('user_project','UserId, ProjectId, Status',"$this->id, '$projectId', $status");
 	}	
 	
-	function getProjectIds()
-	{
-		//$result = $GLOBALS['db']->select('ProjectId','user_project','UserId','$this->id');
+	function getProjectIds() {
 		$result = $GLOBALS['db']->raw("SELECT ProjectId FROM user_project WHERE UserId='$this->id' ");
 		$projectIdArr = array();
-		while($row = $result->fetch_assoc())
-		{
-			//$project = new Project(null);
-			//$project->getProject($row['ProjectId']);
+		while($row = $result->fetch_assoc()) {
 			array_push($projectIdArr, $row['ProjectId']);
 		}
 		return $projectIdArr;
 	}
 	
-	function deleteProject($projectId)
-	{
+	function deleteProject($projectId) {
 		$GLOBALS['db']->delete('user_project','ProjectId',"'$projectId'");
 	}
-	function addInterest($threadId)
-	{
+
+	function addInterest($threadId) {
 		$GLOBALS['db']->insert('user_thread','UserId, ThreadId',"'$this->id', '$threadId'");
 	}	
 	
-	function deleteInterest($threadId)
-	{
+	function deleteInterest($threadId) {
 		$GLOBALS['db']->delete('user_thread','ThreadId',"'$threadId'");
 	}
 	
-	function getInterests()
-	{
+	function getInterests() {
 		$result = $GLOBALS['db']->select('ThreadId','user_thread','UserId',"$this->id");
 		$threadArr = array();
 		while($row = $result->fetch_assoc())
@@ -85,14 +76,12 @@ class User
 		return $threadArr;
 	}	
 	
-	function insertUser()
-	{
+	function insertUser() {
 		$GLOBALS['db']->insert('users','Name, Email, Pass , College , Branch , Phoneno',"'$this->name', '$this->email', '$this->pass', '$this->college', '$this->branch' , '$this->phoneno'");
 		
 	}
 	
-	function getUserFromUserName($user)
-	{
+	function getUserFromUserName($user) {
 		$result = $GLOBALS['db']->select('*','users','Email',$user);
 		$row = $result->fetch_assoc();
 		$this->id = $row['UserId'];
@@ -104,8 +93,7 @@ class User
 		
 	}
 	
-	function getUser($userId)
-	{
+	function getUser($userId) {
 		$result = $GLOBALS['db']->select('*','users','UserId',$userId);
 		$row = $result->fetch_assoc();
 		
@@ -116,9 +104,8 @@ class User
 		$this->branch = $row['Branch'];
 		$this->phoneno = $row['Phoneno'];
 	}
-	function getName()
-	{
+
+	function getName() {
 		return $this->name;
 	}
 }
-?>

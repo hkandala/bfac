@@ -2,6 +2,7 @@
 require_once './include/php/connect.php';
 require_once 'ProjectClass.php';
 require_once 'UserClass.php';
+
 class Thread
 {
 	protected $id;
@@ -86,4 +87,3 @@ class Thread
 		return $this->label;
 	}
 }
-?>
