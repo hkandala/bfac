@@ -1,7 +1,3 @@
-function bell(){
-	alert(":P");
-}
-
 function loadMyProjects() {
 	$.ajax({
     url: 'loadMyProjects.php',

@@ -5,84 +5,45 @@
     $allObj = new All;
 ?>
 
-<style type="text/css">
-  .dropdown
-  {
-    background-color: white;
-  font-family: inherit;
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
-  display: block;
-  font-size: 0.875em;
-  margin: 0 0 1em 0;
-  padding: 0.5em;
-  height: 2.3125em;
-  width: 100%;
+<div class="row">
+    <div class="col s12 projects-wrapper">
+        <div class="card-panel projects-main-header"><i class="mdi-av-my-library-books"></i> My Projects</div>
 
-  }
-  .tags
-  {
-    height: 2.5125em !important;
-  }
-  .teambubble-list
-  {
-    padding-left: 10px;
-    display: inline-block;
-    list-style-type: none;
-  }
-  .teambubble
-  {
-    display: inline-block;
-    float: left !important;
-    margin:10px;
-    padding: 5px;
-    border-radius: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #3b98a7;
-    border-bottom: solid 2px #286973;
-    color: #fff;
-  }
-  .teambubble-admin
-  {
-    display: inline-block;
-    float: left !important;
-    margin:10px;
-    padding: 5px;
-    border-radius: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #da4600;
-    border-bottom: solid 2px #a63400;
-    color: #fff;
-  }
-</style>
-
-<div class="body-header">My Projects</div><br>
-  <?php
-    $result = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN projects p ON u.ProjectId = p.ProjectId WHERE u.UserId=".$curUserId);
-    echo "<div class='issues-container'>";
-    while($row = $result->fetch_assoc())
-    {
-        echo "<div class='issues-header''>".$row["Title"]."</div>";
-        echo "<div class='challenges-container'>".$row["Abstract"]."</div>";
-//        echo "<div class='issues-header''>"."Team"."</div>";
-        $result2 = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN users p ON u.UserId = p.UserId WHERE u.ProjectId='".$row["ProjectId"]."'");
-        echo "<ul class='teambubble-list'>";
-        while($row2 = $result2->fetch_assoc())
-        {
-          if($row2["Status"] == 0)
-          {
-            echo "<li class='teambubble-admin'>".$row2["Name"]." (Team Leader)</li>";
-          }
-          else
-          {
-             echo "<li class='teambubble'>".$row2["Name"]."</li>";
-          }
+    <?php
+        $result = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN projects p ON u.ProjectId = p.ProjectId WHERE u.UserId=".$curUserId);
+        echo '<ul class="collapsible" data-collapsible="expandable">';
+        while($row = $result->fetch_assoc()) {
+            echo ('
+                <li>
+                    <div class="collapsible-header">' . $row["Title"] . '</div>
+                    <div class="collapsible-body">
+                        <h3>Abstract</h3>
+                        <div class="abstract">'. $row["Abstract"] .'</div>
+                        <h3>Requirements</h3>
+                        <div class="req">'. $row["Requirement"] .'</div>
+                        <h3>Why Makeathon?</h3>
+                        <div class="whymakeathon">'. $row["WhyMakeathon"] .'</div>
+            ');
+            $result2 = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN users p ON u.UserId = p.UserId WHERE u.ProjectId='".$row["ProjectId"]."'");
+            echo('
+                <h3>Team Members</h3>
+                <div class="team">
+            ');
+            while($row2 = $result2->fetch_assoc()) {
+                if($row2["Status"] == 0) {
+                    echo "<div class='team-member'>".$row2["Name"]." (Team Leader)</div>";
+                } else {
+                    echo "<div class='team-member'>".$row2["Name"]."</div>";
+                }
+            }
+            echo('
+                            </div>
+                        </div>
+                    </li>
+            ');
         }
-        echo "</ul>";
-    }
-  ?>
+        echo '</ul>';
+    ?>
+
+    </div>
 </div>
