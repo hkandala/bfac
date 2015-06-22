@@ -1,6 +1,7 @@
 <?php 
-session_start();
-require_once 'include/php/connect.php';
+    session_start();
+    require_once 'include/php/connect.php';
+    $pageName = "forum.php"
 ?>
 <html>
 <head>
@@ -234,7 +235,7 @@ $('.loading').fadeOut(300);
 <div class="large-12 small-12 lightboxbg" id="bg"></div>  
 <div class="large-4 push-1 small-12 lightbox" id="lbox"></div>
 <?php 
-require "header.php";
+    require_once "header.php";
 ?>
 <div class="row">
 
@@ -305,94 +306,18 @@ $date->add(new DateInterval('PT5H30M'));
         ?>
     </div>
 </div>
+
 <?php 
-require "footer.php";
+    require_once "footer.php";
 ?>
-	<script>
+<script>
   document.write('<script src=' +
   ('__proto__' in {} ? 'include/js/vendor/zepto' : 'include/js/vendor/jquery') +
   '.js><\/script>')
-  </script>
-  
-  <script src="include/js/foundation.min.js"></script>
-  <!--
-  
-  <script src="include/js/foundation/foundation.js"></script>
-  
-  <script src="include/js/foundation/foundation.alerts.js"></script>
-  
-  <script src="include/js/foundation/foundation.clearing.js"></script>
-  
-  <script src="include/js/foundation/foundation.cookie.js"></script>
-  
-  <script src="include/js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="include/js/foundation/foundation.forms.js"></script>
-  
-  <script src="include/js/foundation/foundation.joyride.js"></script>
-  
-  <script src="include/js/foundation/foundation.magellan.js"></script>
-  
-  <script src="include/js/foundation/foundation.orbit.js"></script>
-  
-  <script src="include/js/foundation/foundation.reveal.js"></script>
-  
-  <script src="include/js/foundation/foundation.section.js"></script>
-  
-  <script src="include/js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="include/js/foundation/foundation.topbar.js"></script>
-  
-  <script src="include/js/foundation/foundation.interchange.js"></script>
-  
-  <script src="include/js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="include/js/foundation/foundation.abide.js"></script>
-  
-  -->
-  
-  <script>
+</script>
+<script src="include/js/foundation.min.js"></script>
+<script>
     $(document).foundation();
-  </script>
-  <script type="text/javascript">
-var validator = new FormValidator('regform', [
-{
-    name: 'name',
-    display: 'name',    
-    rules: 'required'
-}, {
-    name: 'email',
-    rules: 'alpha_numeric|required'
-}, {
-    name: 'password',
-    rules: 'required'
-}, {
-    name: 'confirmpassword',
-    display: 'password confirmation',
-    rules: 'required|matches[password]|min_length[6]'
-}, {
-    name: 'email',
-    rules: 'valid_email'
-}, {
-    name: 'college',
-    rules: 'required'
-}, {
-    name: 'branch',
-    rules: 'required'
-}, {
-    name: 'phoneno',
-    rules: 'required|numeric|max_length[10]|min_length[10]'
-}], function(errors, event) {
-    if (errors.length > 0) {
-        var errorString = '';
-        
-        for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
-            errorString += errors[i].message + '<br />';
-        }
-        
-        document.getElementById('error').innerHTML = '<br><br>'+errorString+'<br><br>';
-    }
-});
-  </script>
+</script>
 </body>
 </html>

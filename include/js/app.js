@@ -1,9 +1,15 @@
 /*----------------------Main Script--------------------------*/
 var windowHeight = $(window).height();
+var mainBodyHeight = windowHeight - 90;
 var signUpBlock = false;
 
 $(document).ready(function () {
 	$('.loading').height(windowHeight);
+    $('.menu').height(windowHeight);
+    $("#main-body-container").css("min-height", mainBodyHeight);
+    $('#menuDashboard').click(function () {
+        window.location = 'desking.php';
+    });
     $('.menu-button').on("click", function() {
         $('body').toggleClass('nav_is_visible');
     });
@@ -33,7 +39,7 @@ $(document).ready(function () {
         $('#login .modal-content .login-block').hide();
         if(!signUpBlock) {
             $('#login .progress').show();
-            $("#login .modal-content .signup-block").load('signup-form.html', function() {
+            $("#login .modal-content .signup-block").load('signup-form.php', function() {
                 $('#login .progress').hide();
                 $('#login .modal-content .signup-block').show();
                 signUpBlock = true;
@@ -112,6 +118,49 @@ function loginValidate () {
 /*-----------------------------------------------------------*/
 
 /*----------------------Page Script--------------------------*/
+$(document).ready(function () {
+    $.post('dashboard.php', function(data) {
+        $(".preloader-wrapper").addClass("hide");
+        $('.content-container').html(data);
+    }).fail(function () {
+        $(".preloader-wrapper").addClass("hide");
+        $(".unableToConnect").removeClass("hide");
+    });
+    $(".menu #Dashboard").click(function() {
+        changeTab('Dashboard', 'dashboard.php');
+    });
+    $(".menu #Challenges").click(function() {
+        changeTab('Challenges', 'showChallenges.php');
+    });
+    $(".menu #MyProjects").click(function() {
+        changeTab('MyProjects', 'showMyProjects.php');
+    });
+    $(".menu #NewProject").click(function() {
+        changeTab('NewProject', 'addNewProject.php');
+    });
+});
 
+function changeTab (id, fileName) {
+    $(".menu a").removeClass("selected");
+    $('.menu #' + id ).addClass("selected");
+    $(".content-container").empty();
+    $(".preloader-wrapper").removeClass("hide");
+    $(".unableToConnect").addClass("hide");
+    $.post(fileName, function(data) {
+        $(".preloader-wrapper").addClass("hide");
+        $('.content-container').html(data);
+        if(id == 'Challenges' || 'MyProjects') {
+            initCollapsible();
+        }
+    }).fail(function () {
+        $(".preloader-wrapper").addClass("hide");
+        $(".unableToConnect").removeClass("hide");
+    });
+}
 
+function initCollapsible () {
+    $('.collapsible').collapsible({
+        accordion : false
+    });
+}
 /*-----------------------------------------------------------*/

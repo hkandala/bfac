@@ -131,7 +131,7 @@ require "header.php";
 
   <div class="columns large-9 small-12" id="main-body-container">
         <?php
-             require 'defaultHome.php';
+             require 'showChallenges.php';
         ?>
     </div>
 </div>
