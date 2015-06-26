@@ -15,6 +15,7 @@
     <meta name="description" content="This is an initiative that provides engineers with tools to create, ideate and prototype for socially assistive causes, in turn helping schools for the differently abled.">
     <meta name="keywords" content="Build For A Change, Makeathon, IEEE-VIT, VIT, University, Projects, Students">
     <title>Build For A Change | Home</title>
+    <link rel="icon" href="img/favicon.png">
     <!-----------------------------Stylesheets---------------------------->
     <link rel="stylesheet" type="text/css" href="include/css/styles.css">
     <!-------------------------------------------------------------------->
@@ -36,16 +37,30 @@
     require_once 'header.php';
 ?>
 <div class="row">
-  <div class="columns large-9 small-12">
-      <div class="hide-for-medium-down quote">
-          <div class='quote-heading'>It is not enough to be busy<br>we must ask 'what are we busy about?'</div>
-          <div class="quote-by">-David Henry Thoreau</div>
-      </div><br/><br/>
-      <div class="columns large-12 small-12">
-      <div class="body-header">About</div><br>
-        <div class="body-text">
-        The make-a-thon initiative provides engineers with tools to create, ideate and prototype for socially assistive causes, in turn helping schools for the differently abled. The prototypes are to be cost effective with the intention of making school life for both the children and the teachers easier.
-        </div><br><br>
+    <div class="bgNavbar">
+        <a href = "index.php" class="white-logo"><img src = "img/logos/bfacwhitelogo.png" alt = "Makeathon Logo" /></a>
+        <div class="navigation">
+            <?php
+                if(!isset($_SESSION['curUser'])) {
+                    echo '<a class="modal-trigger" href="#login">Login</a>';
+                } else {
+                    echo '<a href="logout.php">Logout</a>';
+                }
+            ?>
+            <a href = "aboutus.php">About Us</a>
+            <a href = "#contactUs" class="modal-trigger">Contact Us</a>
+            <a href = "index.php">Home</a>
+            <div class="overlay"></div>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="tempHover">
+            <h1>BUILD FOR A CHANGE</h1>
+            <p>The make-a-thon initiative provides engineers with tools to create, ideate and prototype for socially assistive causes, in turn helping schools for the differently abled. The prototypes are to be cost effective with the intention of making school life for both the children and the teachers easier.</p>
+        </div>
+        <a class="<?php if(!isset($_SESSION['curUser'])) { echo "modal-trigger "; } ?>startProject" href="<?php if(!isset($_SESSION['curUser'])) { echo "#login"; } else { echo "desking.php"; }?>">START A PROJECT</a>
+    </div>
+
       <div class="body-header">News</div><br>
       <?php
       $arrayBig = $allObj->getNews();
@@ -94,14 +109,13 @@
         <br>
         <div class="body-header">Organizers</div><br>
         <ul class="inline-list">
-          <li><img class="sponsor-image" src="textures/ji.jpg"></li>
-          <li><img class="sponsor-image" src="textures/ieeevit.jpg"></li>
-          <li><img class="sponsor-image" src="textures/vit.jpg"></li>
-          <li><img class="sponsor-image" src="textures/i4d.jpg"></li>
+          <li><img class="sponsor-image" src="img/logos/ieeevitlogo.png"></li>
+          <li><img class="sponsor-image" src="img/logos/vitlogo.png"></li>
         </ul>
       </div>
   </div>
 </div>
+
 <?php
     require_once "footer.php";
 ?>

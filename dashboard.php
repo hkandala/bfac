@@ -60,21 +60,4 @@
             }
         ?>
     </div>
-    <div class="col s12">
-        <div class="card-panel organizers-header">Organizers</div>
-        <div class="card-panel organizers">
-            <div class="col l3 m6 s12">
-                <img src = "img/logos/jilogo.png" alt = "JI Logo" />
-            </div>
-            <div class="col l3 m6 s12">
-                <img src = "img/logos/ieeevitlogo.png" alt = "IEEE-VIT Logo" />
-            </div>
-            <div class="col l3 m6 s12">
-                <img src = "img/logos/vitlogo.png" alt = "VIT Logo" />
-            </div>
-            <div class="col l3 m6 s12">
-                <img src = "img/logos/i4dlogo.png" alt = "I4D Logo" />
-            </div>
-        </div>
-    </div>
 </div>

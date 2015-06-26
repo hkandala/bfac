@@ -12,8 +12,10 @@
     <?php
         $result = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN projects p ON u.ProjectId = p.ProjectId WHERE u.UserId=".$curUserId);
         echo '<ul class="collapsible" data-collapsible="expandable">';
-        while($row = $result->fetch_assoc()) {
-            echo ('
+        $n= $result->num_rows;
+        if($n != 0) {
+            while($row = $result->fetch_assoc()) {
+                echo ('
                 <li>
                     <div class="collapsible-header">' . $row["Title"] . '</div>
                     <div class="collapsible-body">
@@ -24,22 +26,30 @@
                         <h3>Why Makeathon?</h3>
                         <div class="whymakeathon">'. $row["WhyMakeathon"] .'</div>
             ');
-            $result2 = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN users p ON u.UserId = p.UserId WHERE u.ProjectId='".$row["ProjectId"]."'");
-            echo('
+                $result2 = $GLOBALS['db']->raw("SELECT u.*, p.* FROM user_project u INNER JOIN users p ON u.UserId = p.UserId WHERE u.ProjectId='".$row["ProjectId"]."'");
+                echo('
                 <h3>Team Members</h3>
                 <div class="team">
             ');
-            while($row2 = $result2->fetch_assoc()) {
-                if($row2["Status"] == 0) {
-                    echo "<div class='team-member'>".$row2["Name"]." (Team Leader)</div>";
-                } else {
-                    echo "<div class='team-member'>".$row2["Name"]."</div>";
+                while($row2 = $result2->fetch_assoc()) {
+                    if($row2["Status"] == 0) {
+                        echo "<div class='team-member'>".$row2["Name"]." (Team Leader)</div>";
+                    } else {
+                        echo "<div class='team-member'>".$row2["Name"]."</div>";
+                    }
                 }
-            }
-            echo('
+                echo('
                             </div>
                         </div>
                     </li>
+            ');
+            }
+        } else {
+            echo('
+                <div class="no-projects">
+                    <h4>Oops! You don\'t have any projects.</h4>
+                    <h5><span>Add a new project</span> now.</h5>
+                </div>
             ');
         }
         echo '</ul>';

@@ -214,6 +214,68 @@ body {
     }
   }
 }
+#contactUs {
+  h1 {
+    color: #004d40;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0 20px;
+  }
+  .col {
+    padding: 20px 30px;
+    img {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      border-radius: 50%;
+      border: 5px solid #009688;
+      margin: 0 auto;
+    }
+    p {
+      color: #004d40;
+      text-align: center;
+      font-weight: 600;
+      padding-top: 10px;
+    }
+    .contact {
+      font-size: 14px;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+  }
+  .dev {
+    position: relative;
+    h5 {
+      color: #FFFFFF;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    a {
+      display: block;
+      text-align: center;
+      padding-top: 5px;
+      font-size: 14px;
+      color: #FFFFFF;
+      text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .dev>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+#contactUs.modal {
+  max-height: 80%;
+}
 .menu {
   position: fixed;
   top: 0;
@@ -279,8 +341,8 @@ body {
     width: 100%;
     z-index: 998;
     background-color: #FFFFFF;
-    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), top 0.5s;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55), top 0.5s;
     .menu-button {
       visibility: hidden;
       color: #212121;
@@ -295,8 +357,8 @@ body {
       transition: all 0.3s linear;
     }
     .logo {
-      height: 64px;
-      padding-top: 26px;
+      height: 70px;
+      padding-top: 20px;
       float: left;
       transition: all 0.3s linear, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 3.55);
     }
@@ -347,14 +409,175 @@ body {
     }
   }
 }
+main.index {
+  padding-right: 0;
+  padding-top: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+header.index .menu {
+  -webkit-transform: translate3d(-250px, 0, 0);
+      -ms-transform: translate3d(-250px, 0, 0);
+          transform: translate3d(-250px, 0, 0);
+  padding-top: 0;
+}
+header.index .navbar-only {
+  top: -100px;
+}
+header.index .scrolledIndex.navbar-only {
+  top: 0;
+}
+main.index .bgNavbar {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  .white-logo {
+    img {
+      margin-top: 40px;
+      margin-left: 50px;
+      width: 150px;
+    }
+  }
+  .navigation {
+    a {
+      color: #F5F5F5;
+      position: absolute;
+      top: 50px;
+      padding: 15px 0;
+      transition: color 0.3s;
+      &:hover {
+        color: #212121;
+        transition: color 0.3s;
+      }
+    }
+    a[href="index.php"] {
+      color: #212121;
+      right: 430px;
+    }
+    a[href="aboutus.php"] {
+      right: 320px;
+    }
+    a[href="aboutus.php"]:hover~.overlay {
+      right: 305px;
+      transition: all 0.3s;
+    }
+    a[href="aboutus.php"]:hover~a[href="index.php"] {
+      color: #F5F5F5;
+      transition: color 0.3s;
+    }
+    a[href="#contactUs"] {
+      right: 200px;
+    }
+    a[href="#contactUs"]:hover~.overlay {
+      right: 185px;
+      width: 110px;
+      transition: all 0.3s;
+    }
+    a[href="#contactUs"]:hover~a[href="index.php"] {
+      color: #F5F5F5;
+      transition: color 0.3s;
+    }
+    a[href="#login"], a[href="logout.php"] {
+      color: #212121;
+      padding: 15px 25px;
+      background-color: #FFFFFF;
+      border-radius: 2px;
+      right: 50px;
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: #EEEEEE;
+        transition: background-color 0.3s;
+      }
+    }
+    .overlay {
+      position: absolute;
+      z-index: -5;
+      top: 0;
+      right: 400px;
+      width: 100px;
+      height: 100px;
+      background-color: #FFFFFF;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      transition: all 0.3s;
+    }
+  }
+}
+main.index .bg {
+  width: 100%;
+  background: #616161 url('../../img/bfac-background.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  .tempHover {
+    top: 45%;
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+    transform: translateY(-50%);
+    h1 {
+      display: block;
+      font-family: OstrichSans, sans-serif;
+      font-size: 90px;
+      color: #F5F5F5;
+      margin: 0 60px;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    p {
+      display: block;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      color: #F5F5F5;
+      text-align: center;
+      width: 90%;
+      max-width: 800px;
+      line-height: 1.5;
+      font-weight: 300;
+      font-size: 18px;
+      transform: translateX(-50%);
+      transition: opacity 0.5s;
+    }
+    &:hover {
+      h1 {
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      p {
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
+    }
+  }
+  a {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    display: block;
+    width: 190px;
+    color: #F5F5F5;
+    padding: 25px;
+    border-radius: 2px;
+    border: 1px solid #F5F5F5;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.3s;
+    }
+  }
+}
 .scrolled.navbar .menu-button {
   margin-top: 22px;
   margin-bottom: 22px;
   transition: all 0.3s linear;
 }
 .scrolled.navbar .logo{
-  height: 54px;
-  padding-top: 16px;
+  height: 62px;
+  padding-top: 12px;
   transition: all 0.3s linear, transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 3.55);
 }
 .scrolled.navbar .login-btn {
@@ -478,31 +701,6 @@ main {
           font-weight: 300;
         }
       }
-      .organizers-header {
-        width: 90%;
-        font-size: 25px;
-        font-weight: 600;
-        color: #37474f;
-        margin: 30px auto 0;
-      }
-      .organizers {
-        width: 90%;
-        margin-top: 0;
-        margin-left: auto;
-        margin-right: auto;
-        overflow: hidden;
-        div {
-          position: relative;
-          height: 170px;
-          img {
-            position:absolute;
-            top: 50%;
-            left: 50%;
-            width: 70%;
-            transform: translate(-50%, -50%);
-          }
-        }
-      }
       .challenges-wrapper {
         width: 90%;
         margin-left: auto;
@@ -526,6 +724,7 @@ main {
             .collapsible-body {
               padding: 10px 20px;
               .challenges-container {
+                line-height: 1.5;
                 box-shadow: none;
                 border: 1px solid #cfd8dc;
                 transition: all 0.3s;
@@ -564,16 +763,148 @@ main {
               font-size: 18px;
             }
             .collapsible-body {
-              padding: 20px 30px 30px;
+              padding: 10px 30px 20px;
               h3 {
+                color: #1a237e;
                 font-weight: 500;
                 font-size: 18px;
-                margin-top: 10px;
-                margin-bottom: 5px;
+                margin-top: 15px;
+              }
+              .team {
+                .team-member {
+                  float: left;
+                  background-color: #009688;
+                  color: #F5F5F5;
+                  padding: 10px;
+                  margin: 10px;
+                  border-radius: 2px;
+                }
+              }
+            }
+          }
+          .no-projects {
+            text-align: center;
+            padding: 30px 10px;
+            h4 {
+              color: #F44336;
+              font-size: 22px;
+              font-weight: 600;
+            }
+            h5 {
+              color: #37474f;
+              font-weight: 600;
+              span {
+                cursor: pointer;
+              }
+              span:hover {
+                text-decoration: underline;
               }
             }
           }
         }
+      }
+      .form-header {
+        width: 95%;
+        color: #37474f;
+        margin: 30px auto 0;
+        font-size: 25px;
+        font-weight: 600;
+        padding: 20px;
+      }
+      .form-wrapper {
+        width: 95%;
+        color: #37474f;
+        padding: 25px 50px;
+        margin: 0 auto 10px;
+        .dropdown-content li > a, .dropdown-content li > span {
+          font-size: 1rem;
+          padding: 0.75rem;
+        }
+        .select-wrapper input.select-dropdown {
+          color: #9E9E9E;
+        }
+        .non-admin {
+          label {
+            margin-top: 20px;
+            margin-bottom: 10px;
+          }
+          .team {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            border: 1px solid #BDBDBD;
+            .team-member {
+              float: left;
+              background-color: #009688;
+              color: #F5F5F5;
+              padding: 10px;
+              margin: 10px;
+              border-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.fixedNav {
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  background-color: #00796b;
+  width: 100%;
+  height: 115px;
+  padding: 40px;
+  a {
+    color: white;
+    font-size: 30px;
+  }
+}
+.background-nav {
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  background-color: #00796b;
+  z-index: -1;
+}
+.card-container {
+  position: relative;
+  z-index: 5;
+  width: 92%;
+  max-width: 960px;
+  margin: 35px auto 0;
+  .content {
+    img {
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      margin: 50px auto 35px;
+    }
+    h1 {
+      color: white;
+      font-size: 36px;
+      font-weight: 500;
+      margin-left: 20px;
+      a {
+        display: none;
+        color: white;
+        font-size: 25px;
+        margin: 5px 15px 0;
+      }
+    }
+    .card-content {
+      padding: 0 20px 20px;
+      h2 {
+        color: #263238;
+        font-weight: 500;
+        line-height: 2;
+        font-size: 22px;
+        margin-top: 15px;
+      }
+      p {
+        line-height: 2;
+        color: #37474f;
       }
     }
   }
@@ -585,6 +916,7 @@ footer.page-footer {
   margin-top: 0;
   background-color: #00796b;
   h5 {
+    line-height: 1.5;
     font-size: 40px;
     padding: 30px;
   }
@@ -629,6 +961,48 @@ footer.page-footer {
         -ms-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
   }
+  body.nav_is_visible .madeWith {
+    bottom: 20px;
+  }
+  main.index .bgNavbar .navigation {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .fixedNav {
+    display: none;
+  }
+  .card-container {
+    margin-top: 10px;
+    .content h1 {
+      font-weight: 400;
+      font-size: 28px;
+      margin-left: 0;
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 734px) {
+  main.index .bg a{
+    top: 75%;
+  }
+}
+@media only screen and (max-width: 494px) {
+  main.index .bg a{
+    top: 78%;
+  }
+}
+@media only screen and (max-width: 452px) {
+  main.index .bg .tempHover {
+    top: 50%;
+  }
+}
+@media only screen and (max-width: 415px) {
+  main.index .bg a{
+    top: 85%;
+  }
 }
 @media only screen and (max-width: 500px) {
   main #main-body-container .content-container .user-greeting {
@@ -636,6 +1010,15 @@ footer.page-footer {
   }
   main #main-body-container .content-container .user-greeting h3 {
     width: 70%;
+  }
+  main #main-body-container .content-container .challenges-wrapper .challenges-header {
+    margin-top: 30px;
+  }
+  main #main-body-container .content-container .projects-wrapper .projects-main-header {
+    margin-top: 30px;
+  }
+  main #main-body-container .content-container .form-header {
+    margin-top: 20px;
   }
 }
 @media only screen and (max-width: 350px) {

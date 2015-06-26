@@ -2,16 +2,22 @@
     require_once 'include/php/connect.php';
     require_once 'UserClass.php';
 
+    $className = "";
+    if($pageName == "index.php") {
+        global $className;
+        $className = "index";
+    }
+
     if(!isset($_SESSION['curUser'])) {
         echo('
-            <header>
+            <header class="' . $className . '">
                 <div class="navbar">
                     <div class="navbar-only z-depth-1">
                         <div class="menu-button">
                             <i class="mdi-navigation-menu"></i>
                         </div>
                         <a href = "index.php">
-                            <img src = "img/logos/makeathonlogocolor.png" alt = "Makeathon Logo" class="logo"/>
+                            <img src = "img/logos/bfaclogo.png" alt = "Makeathon Logo" class="logo"/>
                         </a>
                         <a class="modal-trigger right btn login-btn hide-on-small-and-down" href="#login">Login</a>
                         <div class="hide-on-med-and-up right">
@@ -70,14 +76,14 @@
         $curUser = new User;
         $curUser->getUser($curUserId);
         echo('
-            <header>
+            <header class="' . $className . '">
                 <div class="navbar">
                     <div class="navbar-only z-depth-1">
                         <div class="menu-button">
                             <i class="mdi-navigation-menu"></i>
                         </div>
                         <a href = "index.php">
-                            <img src = "img/logos/makeathonlogocolor.png" alt = "Makeathon Logo" class="logo"/>
+                            <img src = "img/logos/bfaclogo.png" alt = "Makeathon Logo" class="logo"/>
                         </a>
                         <div class="account right">
                             <i class="mdi-action-account-circle dropdown-button" data-activates="account-dropdown"></i>
@@ -108,10 +114,10 @@
                             <a href="index.php" class="selected"><i class="mdi-action-home"></i> <span>Home</span></a>
                         </li>
                         <li>
-                            <a href = "#"><i class="mdi-communication-location-on"></i> <span>Locations</span></a>
+                            <a href = "aboutus.php"><i class="mdi-action-assignment-ind"></i> <span>About Us</span></a>
                         </li>
                         <li>
-                            <a href = "#"><i class="mdi-communication-textsms"></i> <span>Contact Us</span></a>
+                            <a href = "#contactUs" class="modal-trigger contactUsTrigger"><i class="mdi-communication-textsms"></i> <span>Contact Us</span></a>
                         </li>
                     </ul>
                     <div class="madeWith">
@@ -119,7 +125,7 @@
                     </div>
                 </div>
             </header>
-            <main class="z-depth-1-half">
+            <main class="z-depth-1-half ' . $className . '">
         ');
     } else if($GLOBALS['pageName'] === "desking.php") {
         echo('

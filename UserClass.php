@@ -2,8 +2,7 @@
 require_once 'include/php/connect.php';
 require_once 'ProjectClass.php';
 
-class User
-{
+class User {
 	public $id;
 	public $name;
 	public $email;

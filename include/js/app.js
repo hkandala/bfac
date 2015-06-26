@@ -6,12 +6,16 @@ var signUpBlock = false;
 $(document).ready(function () {
 	$('.loading').height(windowHeight);
     $('.menu').height(windowHeight);
+    $('main.index .bg').height(windowHeight);
     $("#main-body-container").css("min-height", mainBodyHeight);
     $('#menuDashboard').click(function () {
         window.location = 'desking.php';
     });
-    $('.menu-button').on("click", function() {
+    $('.menu-button').on("click", function () {
         $('body').toggleClass('nav_is_visible');
+    });
+    $('.contactUsTrigger, main').click(function () {
+        $('body').removeClass('nav_is_visible');
     });
     $('.dropdown-button').dropdown({
             belowOrigin: true,
@@ -26,6 +30,17 @@ $(document).ready(function () {
         } else {
             if($('.navbar').hasClass('scrolled')) {
                 $('.navbar').removeClass('scrolled');
+            }
+        }
+        if($('header').hasClass("index")) {
+            if($(window).scrollTop()>=(windowHeight/2)) {
+                if(!$('.navbar-only').hasClass('scrolledIndex')) {
+                    $('.navbar-only').addClass('scrolledIndex');
+                }
+            } else {
+                if($('.navbar-only').hasClass('scrolledIndex')) {
+                    $('.navbar-only').removeClass('scrolledIndex');
+                }
             }
         }
     });
@@ -143,14 +158,20 @@ $(document).ready(function () {
 function changeTab (id, fileName) {
     $(".menu a").removeClass("selected");
     $('.menu #' + id ).addClass("selected");
+    $('body').removeClass('nav_is_visible');
     $(".content-container").empty();
     $(".preloader-wrapper").removeClass("hide");
     $(".unableToConnect").addClass("hide");
     $.post(fileName, function(data) {
         $(".preloader-wrapper").addClass("hide");
         $('.content-container').html(data);
-        if(id == 'Challenges' || 'MyProjects') {
+        if(id == 'Challenges') {
             initCollapsible();
+        } else if(id == 'MyProjects') {
+            initCollapsible();
+            initNoProjects();
+        } else if(id == 'NewProject') {
+            initSelect();
         }
     }).fail(function () {
         $(".preloader-wrapper").addClass("hide");
@@ -162,5 +183,15 @@ function initCollapsible () {
     $('.collapsible').collapsible({
         accordion : false
     });
+}
+
+function initNoProjects () {
+    $(".content-container .no-projects h5 span").click(function() {
+        changeTab('NewProject', 'addNewProject.php');
+    });
+}
+
+function initSelect () {
+    $('select').material_select();
 }
 /*-----------------------------------------------------------*/
