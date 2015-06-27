@@ -56,7 +56,7 @@
     <div class="bg">
         <div class="tempHover">
             <h1>BUILD FOR A CHANGE</h1>
-            <p>The make-a-thon initiative provides engineers with tools to create, ideate and prototype for socially assistive causes, in turn helping schools for the differently abled. The prototypes are to be cost effective with the intention of making school life for both the children and the teachers easier.</p>
+            <p>We at Build for a Change (BFAC) aim at enabling problem solving through consorted efforts. We provide a platform for creative minds to work together on technical challenges that improve society. Encouraging students to take up socially assistive projects with consistent support from NGOs and technical mentors, and finding feasible solutions is the sole objective of BFAC.</p>
         </div>
         <a class="<?php if(!isset($_SESSION['curUser'])) { echo "modal-trigger "; } ?>startProject" href="<?php if(!isset($_SESSION['curUser'])) { echo "#login"; } else { echo "desking.php"; }?>">START A PROJECT</a>
     </div>

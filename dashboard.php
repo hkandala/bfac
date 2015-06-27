@@ -36,12 +36,6 @@
         </div>
     </div>
     <div class="col s12">
-        <div class="card-panel aboutus">
-            <h2>About</h2>
-            <p>The make-a-thon initiative provides engineers with tools to create, ideate and prototype for socially assistive causes, in turn helping schools for the differently abled. The prototypes are to be cost effective with the intention of making school life for both the children and the teachers easier.</p>
-        </div>
-    </div>
-    <div class="col s12">
         <div class="card-panel news-main-header">Latest News</div>
         <?php
             $arrayBig = $allObj->getNews();

@@ -534,7 +534,7 @@ main.index .bg {
       color: #F5F5F5;
       text-align: center;
       width: 90%;
-      max-width: 800px;
+      max-width: 850px;
       line-height: 1.5;
       font-weight: 300;
       font-size: 18px;
@@ -656,25 +656,10 @@ main {
           text-overflow: ellipsis;
         }
       }
-      .aboutus {
-        width: 90%;
-        max-width: 750px;
-        margin: 0 auto;
-        padding: 30px;
-        color: #37474f;
-        h2 {
-          font-weight: 600;
-          font-size: 25px;
-          margin-bottom: 10px;
-        }
-        p {
-          line-height: 1.5;
-        }
-      }
       .news-main-header {
         width: 90%;
         max-width: 900px;
-        margin: 40px auto 0;
+        margin: 0 auto;
         font-size: 25px;
         font-weight: 600;
         color: #37474f;
