@@ -531,7 +531,6 @@ main.index .bg {
       position: absolute;
       top: 0;
       left: 50%;
-      color: #F5F5F5;
       text-align: center;
       width: 90%;
       max-width: 850px;
@@ -540,6 +539,9 @@ main.index .bg {
       font-size: 18px;
       transform: translateX(-50%);
       transition: opacity 0.5s;
+      a {
+        color: #F5F5F5;
+      }
     }
     &:hover {
       h1 {
@@ -552,7 +554,7 @@ main.index .bg {
       }
     }
   }
-  a {
+  .startProject {
     position: absolute;
     top: 65%;
     left: 50%;
