@@ -1,4 +1,4 @@
-<?php 
+<?php
     session_start();
     require_once 'include/php/connect.php';
     require_once 'AllClass.php';
@@ -33,7 +33,7 @@
         </div>
     </div>
 </div>
-<?php 
+<?php
     require_once 'header.php';
 ?>
 <div class="row">
@@ -60,61 +60,40 @@
         </div>
         <a class="<?php if(!isset($_SESSION['curUser'])) { echo "modal-trigger "; } ?>startProject" href="<?php if(!isset($_SESSION['curUser'])) { echo "#login"; } else { echo "desking.php"; }?>">START A PROJECT</a>
     </div>
-
-      <div class="body-header">News</div><br>
-      <?php
-      $arrayBig = $allObj->getNews();
-      foreach($arrayBig as $temp)
-      {
-      ?>
-        <div class="news-item">
-          <div class="news-container">
-            <div class="news-header">
-              <?php echo $temp['title'] ?>
-            </div>
-            <div class="news-content">
-            <?php echo $temp['desp'] ?>
-            </div>
-          </div>
-
-          <div class="news-time">At <?php echo $temp['date'] ?> By <?php echo $temp['by'] ?></div>
+    <div class="news-wrapper">
+        <h2>Latest News</h2>
+        <div class="news-container">
+            <?php
+                $arrayBig = $allObj->getNews();
+                foreach($arrayBig as $temp) {
+                    echo '
+                        <div class="news-item z-depth-1">
+                            <div class="news-header">
+                                ' . $temp['title'] . '
+                            </div>
+                            <div class="news-content">
+                                ' . $temp['desp'] . '
+                            </div>
+                            <div class="news-time">
+                                At ' . $temp['date'] . ' By ' . $temp['by'] . '
+                            </div>
+                        </div>
+                        ';
+                }
+            ?>
         </div>
-        <?php }
-
-        ?>
-        <br>
-
-        <div class="body-header">Issues</div><br>
-        <ul class="inline-list issue-list">
-        <?php
-        $arrayBig = $allObj->getIssues();
-        foreach($arrayBig as $temp)
-        {
-        ?>
-        <li>
-            <div class="issue-box issue-image" style="background-image: url(<?php echo "'".$temp['image']."'" ?>)">
-              <div class="issue-box-bg">
-                  <div class="issue-header"><?php echo $temp['title'] ?></div>
-                  <div class="issue-content">
-                  <?php echo $temp['summary'] ?></div>
+    </div>
+    <div class="organizers-wrapper">
+        <div class="organizers z-depth-1">
+            <h2>In collaboration with</h2>
+            <div class="col l6 s12">
+                <img src="img/logos/ieeevitlogo.png" alt="IEEE-VIT">
             </div>
+            <div class="col l6 s12">
+                <img src="img/logos/vitlogo.png" alt="VIT">
             </div>
-          </li>
-
-        <?php
-        }
-        ?>
-
-        </ul>
-        <br>
-        <div class="body-header">Organizers</div><br>
-        <ul class="inline-list">
-          <li><img class="sponsor-image" src="img/logos/ieeevitlogo.png"></li>
-          <li><img class="sponsor-image" src="img/logos/vitlogo.png"></li>
-        </ul>
-      </div>
-  </div>
-</div>
+        </div>
+    </div>
 
 <?php
     require_once "footer.php";

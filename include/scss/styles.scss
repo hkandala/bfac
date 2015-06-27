@@ -428,148 +428,226 @@ header.index .navbar-only {
 header.index .scrolledIndex.navbar-only {
   top: 0;
 }
-main.index .bgNavbar {
-  position: absolute;
-  z-index: 10;
-  width: 100%;
-  .white-logo {
-    img {
-      margin-top: 40px;
-      margin-left: 50px;
-      width: 150px;
-    }
-  }
-  .navigation {
-    a {
-      color: #F5F5F5;
-      position: absolute;
-      top: 50px;
-      padding: 15px 0;
-      transition: color 0.3s;
-      &:hover {
-        color: #212121;
-        transition: color 0.3s;
-      }
-    }
-    a[href="index.php"] {
-      color: #212121;
-      right: 430px;
-    }
-    a[href="aboutus.php"] {
-      right: 320px;
-    }
-    a[href="aboutus.php"]:hover~.overlay {
-      right: 305px;
-      transition: all 0.3s;
-    }
-    a[href="aboutus.php"]:hover~a[href="index.php"] {
-      color: #F5F5F5;
-      transition: color 0.3s;
-    }
-    a[href="#contactUs"] {
-      right: 200px;
-    }
-    a[href="#contactUs"]:hover~.overlay {
-      right: 185px;
-      width: 110px;
-      transition: all 0.3s;
-    }
-    a[href="#contactUs"]:hover~a[href="index.php"] {
-      color: #F5F5F5;
-      transition: color 0.3s;
-    }
-    a[href="#login"], a[href="logout.php"] {
-      color: #212121;
-      padding: 15px 25px;
-      background-color: #FFFFFF;
-      border-radius: 2px;
-      right: 50px;
-      transition: background-color 0.3s;
-      &:hover {
-        background-color: #EEEEEE;
-        transition: background-color 0.3s;
-      }
-    }
-    .overlay {
-      position: absolute;
-      z-index: -5;
-      top: 0;
-      right: 400px;
-      width: 100px;
-      height: 100px;
-      background-color: #FFFFFF;
-      border-bottom-left-radius: 3px;
-      border-bottom-right-radius: 3px;
-      transition: all 0.3s;
-    }
-  }
-}
-main.index .bg {
-  width: 100%;
-  background: #616161 url('../../img/bfac-background.png') no-repeat center center;
-  background-size: cover;
-  position: relative;
-  .tempHover {
-    top: 45%;
+main.index {
+  .bgNavbar {
     position: absolute;
+    z-index: 10;
     width: 100%;
-    cursor: pointer;
-    transform: translateY(-50%);
-    h1 {
-      display: block;
-      font-family: OstrichSans, sans-serif;
-      font-size: 90px;
-      color: #F5F5F5;
-      margin: 0 60px;
-      text-align: center;
-      opacity: 1;
-      transition: opacity 0.5s;
+    .white-logo {
+      img {
+        margin-top: 40px;
+        margin-left: 50px;
+        width: 150px;
+      }
     }
-    p {
-      display: block;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      text-align: center;
-      width: 90%;
-      max-width: 850px;
-      line-height: 1.5;
-      font-weight: 300;
-      font-size: 18px;
-      transform: translateX(-50%);
-      transition: opacity 0.5s;
+    .navigation {
       a {
         color: #F5F5F5;
+        position: absolute;
+        top: 50px;
+        padding: 15px 0;
+        transition: color 0.3s;
+        &:hover {
+          color: #212121;
+          transition: color 0.3s;
+        }
+      }
+      a[href="index.php"] {
+        color: #212121;
+        right: 430px;
+      }
+      a[href="aboutus.php"] {
+        right: 320px;
+      }
+      a[href="aboutus.php"]:hover~.overlay {
+        right: 305px;
+        transition: all 0.3s;
+      }
+      a[href="aboutus.php"]:hover~a[href="index.php"] {
+        color: #F5F5F5;
+        transition: color 0.3s;
+      }
+      a[href="#contactUs"] {
+        right: 200px;
+      }
+      a[href="#contactUs"]:hover~.overlay {
+        right: 185px;
+        width: 110px;
+        transition: all 0.3s;
+      }
+      a[href="#contactUs"]:hover~a[href="index.php"] {
+        color: #F5F5F5;
+        transition: color 0.3s;
+      }
+      a[href="#login"], a[href="logout.php"] {
+        color: #212121;
+        padding: 15px 25px;
+        background-color: #FFFFFF;
+        border-radius: 2px;
+        right: 50px;
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: #EEEEEE;
+          transition: background-color 0.3s;
+        }
+      }
+      .overlay {
+        position: absolute;
+        z-index: -5;
+        top: 0;
+        right: 400px;
+        width: 100px;
+        height: 100px;
+        background-color: #FFFFFF;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        transition: all 0.3s;
       }
     }
-    &:hover {
+  }
+  .bg {
+    width: 100%;
+    background: #616161 url('../../img/bfac-background.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    .tempHover {
+      top: 45%;
+      position: absolute;
+      width: 100%;
+      cursor: pointer;
+      transform: translateY(-50%);
       h1 {
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-      p {
+        display: block;
+        font-family: OstrichSans, sans-serif;
+        font-size: 90px;
+        color: #F5F5F5;
+        margin: 0 60px;
+        text-align: center;
         opacity: 1;
         transition: opacity 0.5s;
       }
+      p {
+        display: block;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        text-align: center;
+        width: 90%;
+        max-width: 850px;
+        line-height: 1.5;
+        font-weight: 300;
+        font-size: 18px;
+        transform: translateX(-50%);
+        transition: opacity 0.5s;
+        a {
+          color: #F5F5F5;
+        }
+      }
+      &:hover {
+        h1 {
+          opacity: 0;
+          transition: opacity 0.5s;
+        }
+        p {
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
+      }
+    }
+    .startProject {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      display: block;
+      width: 190px;
+      color: #F5F5F5;
+      padding: 25px;
+      border-radius: 2px;
+      border: 1px solid #F5F5F5;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: background-color 0.3s;
+      }
     }
   }
-  .startProject {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    display: block;
-    width: 190px;
-    color: #F5F5F5;
-    padding: 25px;
-    border-radius: 2px;
-    border: 1px solid #F5F5F5;
-    transform: translate(-50%, -50%);
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transition: background-color 0.3s;
+  .news-wrapper {
+    background-color: #eceff1;
+    padding: 20px;
+    border-top: 5px solid #009688;
+    border-bottom: 5px solid #009688;
+    h2 {
+      font-size: 30px;
+      font-weight: 600;
+      color: #455a64;
+      width: 100%;
+      max-width: 1100px;
+      padding-left: 10px;
+      margin: 20px auto;
     }
+    .news-container {
+      .news-item {
+        width: 100%;
+        max-width: 1100px;
+        margin: 20px auto;
+        background-color: #FFFFFF;
+        color: #263238;
+        padding: 20px;
+        line-height: 1.5;
+        border-radius: 2px;
+        overflow: hidden;
+        .news-header {
+          font-size: 22px;
+          font-weight: 500;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #BDBDBD;
+        }
+        .news-content {
+          padding-top: 10px;
+          font-size: 16px;
+        }
+        .news-time {
+          float: right;
+          margin-top: 15px;
+          background-color: #263238;
+          padding: 10px;
+          border-radius: 2px;
+          font-size: 10px;
+          color: #F5F5F5;
+        }
+      }
+    }
+  }
+  .organizers-wrapper {
+    width: 100%;
+    .organizers {
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #FFFFFF;
+      width: 90%;
+      max-width: 960px;
+      overflow: hidden;
+      h2 {
+        padding: 10px;
+        font-size: 25px;
+        font-weight: 500;
+        border-bottom: 1px solid #BDBDBD;
+      }
+      .col {
+        position: relative;
+        height: 150px;
+        img {
+          height: 60px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+        }
+      }
+    } 
   }
 }
 .scrolled.navbar .menu-button {
@@ -972,12 +1050,12 @@ footer.page-footer {
   }
 }
 @media only screen and (max-width: 734px) {
-  main.index .bg a{
+  main.index .bg .startProject{
     top: 75%;
   }
 }
 @media only screen and (max-width: 494px) {
-  main.index .bg a{
+  main.index .bg .startProject{
     top: 78%;
   }
 }
@@ -987,7 +1065,7 @@ footer.page-footer {
   }
 }
 @media only screen and (max-width: 415px) {
-  main.index .bg a{
+  main.index .bg .startProject{
     top: 85%;
   }
 }
