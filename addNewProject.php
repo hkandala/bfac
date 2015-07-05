@@ -83,7 +83,7 @@
                     <div class="col s12">
                         <label class="form-team">Team Members</label>
                     </div>
-                    <ul class="col s12 team">
+                    <!--<ul class="col s12 team">
                         <li>
                             <div class="team-member">Harish Kandala (Team Leader)</div>
                         </li>
@@ -93,14 +93,14 @@
                         <li>
                             <div class="team-member">Harish Kandala</div>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
                     <?php
-    /*                    if(!isset($_GET['id']) || (isset($_GET['id']) && $team['Status'] == 0)) {
-                    */?><!--
+                        if(!isset($_GET['id']) || (isset($_GET['id']) && $team['Status'] == 0)) {
+                    ?>
                     <div class="input-field col s12">
                     <?php
-    /*                    if(isset($_GET['id']) && $team['Status'] == 0) {
+                        if(isset($_GET['id']) && $team['Status'] == 0) {
                             $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='".$_GET['id']."'");
                             $count = $result->num_rows;
                             if($count > 1) {
@@ -118,12 +118,12 @@
                                   echo "<input type='text' value='' class='tag' name='tag[]'/>";
                               }
                         } else {
-                    */?>
+                    ?>
                         <input type="text" value="" class="tag" name="tag[]"/>
                         <input type="text" value="" class="tag" name="tag[]"/>
                         <input type="text" value="" class="tag" name="tag[]"/>
-                    --><?php
-/*                        }
+                    <?php
+                        }
                     echo "</div>";
                     } else {
                         $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='".$_GET['id']."'");
@@ -150,7 +150,7 @@
                                 }
                         echo "</ul></div>";
                     }
-                */?>
+                ?>
 
       <div class="columns large-12 small-12"><label class="form-label">Abstract</label></div>
       <div class="columns large-12 small-12"><textarea class="form-textarea" style="min-height:200px" name="abstract" ><?php echo str_replace( '<br />', "\n", $abstract )?></textarea> </div>
@@ -160,7 +160,7 @@
       <div class="columns large-12 small-12"><textarea class="form-textarea" style="min-height:200px" name="whymak" ><?php echo str_replace( '<br />', "\n",$whymak);?></textarea> </div>
       <div id="error" class="columns large-12 small-12"></div>
       <div type="button" class="columns large-12 small-12 ">
-        <input type="submit"class="form-button " value="Submit" />
+        <input type="submit" class="form-button " value="Submit" />
       </div>
       <div id="error"></div>
       <?php if(isset($_GET['id']) && !empty($_GET['id'])) echo "<input type='hidden' name='id' value='".$_GET['id']."' />"; ?>

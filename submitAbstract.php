@@ -15,11 +15,14 @@ if(isset($_POST['title']) && isset($_POST['abstract']) && isset($_POST['whymak']
 	foreach ($tags as $key) {
         $temp = explode('(', $key);
         $temp_ex = explode(')', $temp[1]);
-		$temp_ex = $key;
+				//$temp_ex = $key;
+				print_r($temp_ex[0]);
+				echo"</br>";
 
-        if($curUser->email != $temp_ex && $GLOBALS['db']->select('*','users','Email',"$temp_ex") && $temp_ex != '')
-		    array_push($emails, $temp_ex);
+        if($curUser->email != $temp_ex[0] && $GLOBALS['db']->select('*','users','Email',"$temp_ex[0]") && $temp_ex[0] != '')
+		    array_push($emails, $temp_ex[0]);
 	}
+	echo "Emails - ";print_r($emails);echo "</br>";//delete later
 	if(isset($_POST['id'])) {
 		$project = new Project($_POST['id']);
 		$project->newProject($title, $challengeId, $abstract, $requirement, $whymak);
