@@ -574,10 +574,8 @@ main.index {
     }
   }
   .news-wrapper {
-    background-color: #eceff1;
     padding: 20px;
     border-top: 5px solid #009688;
-    border-bottom: 5px solid #009688;
     h2 {
       font-size: 30px;
       font-weight: 600;
@@ -1057,6 +1055,9 @@ footer.page-footer {
 @media only screen and (max-width: 494px) {
   main.index .bg .startProject{
     top: 78%;
+  }
+  main.index .bg .tempHover h1 {
+    font-size: 80px;
   }
 }
 @media only screen and (max-width: 452px) {
