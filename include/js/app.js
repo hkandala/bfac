@@ -134,37 +134,39 @@ function loginValidate () {
 
 /*----------------------Page Script--------------------------*/
 $(document).ready(function () {
-    $.post('dashboard.php', function(data) {
-        $(".preloader-wrapper").addClass("hide");
-        $('.content-container').html(data);
-    }).fail(function () {
-        $(".preloader-wrapper").addClass("hide");
-        $(".unableToConnect").removeClass("hide");
-    });
-    $(".menu #Dashboard").click(function() {
-        changeTab('Dashboard', 'dashboard.php');
-    });
-    $(".menu #Challenges").click(function() {
-        changeTab('Challenges', 'showChallenges.php');
-    });
-    $(".menu #MyProjects").click(function() {
-        changeTab('MyProjects', 'showMyProjects.php');
-    });
-    $(".menu #NewProject").click(function() {
-        changeTab('NewProject', 'addNewProject.php');
-    });
+    if($('main').hasClass('desk')) {
+        $.post('dashboard.php', function(data) {
+            $(".desk .preloader-wrapper").addClass("hide");
+            $('.desk .content-container').html(data);
+        }).fail(function () {
+            $(".desk .preloader-wrapper").addClass("hide");
+            $(".desk .unableToConnect").removeClass("hide");
+        });
+        $(".menu #Dashboard").click(function() {
+            changeTab('Dashboard', 'dashboard.php');
+        });
+        $(".menu #Challenges").click(function() {
+            changeTab('Challenges', 'showChallenges.php');
+        });
+        $(".menu #MyProjects").click(function() {
+            changeTab('MyProjects', 'showMyProjects.php');
+        });
+        $(".menu #NewProject").click(function() {
+            changeTab('NewProject', 'addNewProject.php');
+        });
+    }
 });
 
 function changeTab (id, fileName) {
     $(".menu a").removeClass("selected");
     $('.menu #' + id ).addClass("selected");
     $('body').removeClass('nav_is_visible');
-    $(".content-container").empty();
-    $(".preloader-wrapper").removeClass("hide");
-    $(".unableToConnect").addClass("hide");
+    $(".desk .content-container").empty();
+    $(".desk .preloader-wrapper").removeClass("hide");
+    $(".desk .unableToConnect").addClass("hide");
     $.post(fileName, function(data) {
-        $(".preloader-wrapper").addClass("hide");
-        $('.content-container').html(data);
+        $(".desk .preloader-wrapper").addClass("hide");
+        $('.desk .content-container').html(data);
         if(id == 'Challenges') {
             initCollapsible();
         } else if(id == 'MyProjects') {
@@ -174,8 +176,8 @@ function changeTab (id, fileName) {
             initSelect();
         }
     }).fail(function () {
-        $(".preloader-wrapper").addClass("hide");
-        $(".unableToConnect").removeClass("hide");
+        $(".desk .preloader-wrapper").addClass("hide");
+        $(".desk .unableToConnect").removeClass("hide");
     });
 }
 

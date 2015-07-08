@@ -6,6 +6,9 @@
     if($pageName == "index.php") {
         global $className;
         $className = "index";
+    } else if ($pageName == "desking.php") {
+        global $className;
+        $className = "desk";
     }
 
     if(!isset($_SESSION['curUser'])) {
@@ -149,6 +152,6 @@
                     </div>
                 </div>
             </header>
-            <main class="z-depth-1-half">
+            <main class="z-depth-1-half ' . $className . '">
         ');
     }
