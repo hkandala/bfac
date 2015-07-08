@@ -40,7 +40,7 @@ class User {
 	
 	function addProject($projectId, $status) {
 		$GLOBALS['db']->insert('user_project','UserId, ProjectId, Status',"$this->id, '$projectId', $status");
-	}	
+	}
 	
 	function getProjectIds() {
 		$result = $GLOBALS['db']->raw("SELECT ProjectId FROM user_project WHERE UserId='$this->id' ");
@@ -50,7 +50,12 @@ class User {
 		}
 		return $projectIdArr;
 	}
-	
+
+    function deleteUserFromProject($projectId) {
+        $query = "DELETE FROM user_project WHERE UserId='$this->id' AND ProjectId='$projectId'";
+        $GLOBALS['db']->query($query);
+    }
+
 	function deleteProject($projectId) {
 		$GLOBALS['db']->delete('user_project','ProjectId',"'$projectId'");
 	}

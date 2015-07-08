@@ -8,11 +8,74 @@
 ?>
 <script>
     $(document).ready(function(e){
-        $("#form" ).find('input.tag').tagedit({
+        $("#abstractForm" ).find('input.tag').tagedit({
           autocompleteURL: 'team_autocomplete.php',
           allowEdit: false
         });
+        $("#abstractForm").submit(function(e) {
+            e.preventDefault();
+            return abstractFormValidate();
+        });
     });
+
+    function titleValidate() {
+        var content = $("#abstractForm #form-title").val();
+        return (content.length > 0);
+    }
+    function abstractValidate() {
+        var content = $("#abstractForm #form-abstract").val();
+        return (content.length > 0);
+    }
+    function whyBfacValidate() {
+        var content = $("#abstractForm #form-whymakeathon").val();
+        return (content.length > 0);
+    }
+    function challengeValidate() {
+        var id = $("#abstractForm #form-challenge").val();
+        return id != null;
+    }
+    function abstractFormValidate () {
+        if (!challengeValidate()) {
+            $("#abstractForm .feedback").html("Please select a challenge");
+        }
+        if (!titleValidate()) {
+            $("#abstractForm #form-title").addClass("invalid").removeClass("valid");
+            $("#abstractForm .feedback").html("Please check all the fields once");
+        }
+        if (!abstractValidate()) {
+            $("#abstractForm #form-abstract").addClass("invalid").removeClass("valid");
+            $("#abstractForm .feedback").html("Please check all the fields once");
+        }
+        if (!whyBfacValidate()) {
+            $("#abstractForm #form-whymakeathon").addClass("invalid").removeClass("valid");
+            $("#abstractForm .feedback").html("Please check all the fields once");
+        }
+        if(titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate()) {
+            var abstractObj = {
+                title: $("#abstractForm #form-title").val(),
+                challenge: $("#abstractForm #form-challenge").val(),
+                abstract: $("#abstractForm #form-abstract").val(),
+                requirement: $("#abstractForm #form-requirements").val(),
+                whymak: $("#abstractForm #form-whymakeathon").val(),
+            };
+            $("#abstractForm .loadingButton .preloader-wrapper").fadeIn('fast');
+            $.post('submitAbstract.php', abstractObj, function(response) {
+                if(response != '') {
+                    $("#abstractForm .loadingButton .preloader-wrapper").fadeOut('fast');
+                    $('#abstractForm .feedback').html(response);
+                } else {
+                    $("#abstractForm .loadingButton .preloader-wrapper").fadeOut('fast');
+                    $('#abstractForm .feedback').html('Unknown Error, Please try again');
+                }
+            }).fail(function() {
+                $("#abstractForm .loadingButton .preloader-wrapper").fadeOut('fast');
+                $('#abstractForm .feedback').html('Unable to connect to the network');
+            });
+        }
+
+        return (titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate());
+    }
+
 </script>
 <div class="row">
     <div class="col s12">
@@ -20,7 +83,7 @@
     </div>
     <div class="col s12">
         <div class="card-panel new-project-form-wrapper">
-            <form id="form" name="abstractform" action="submitAbstract.php" method="post">
+            <form id="abstractForm" name="abstractform" action="submitAbstract.php" method="post">
                 <?php
                     if(isset($_GET['id']) && !empty($_GET['id'])) {
                        $project = new Project($_GET['id']);
@@ -155,8 +218,24 @@
                     <textarea name="whymak" id="form-whymakeathon" class="validate materialize-textarea"><?php echo str_replace( '<br />', "\n",$whymak);?></textarea>
                     <label for = "form-whymakeathon">Why Build For A Change?</label>
                 </div>
-                <div class="input-field col s12">
-                    <input type="submit" class="btn-large" value="Submit"/>
+                <div class="col s12">
+                    <div class="loadingButton">
+                        <input type="submit" class="btn-large" value="Submit"/>
+                        <div class="preloader-wrapper small active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="feedback"></p>
+                    </div>
                 </div>
             </form>
         </div>

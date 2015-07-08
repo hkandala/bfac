@@ -912,6 +912,32 @@ main {
               margin-bottom: 15px;
             }
           }
+          .loadingButton {
+            position: relative;
+            width: 250px;
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 20px;
+            overflow: hidden;
+            input[type=submit] {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .preloader-wrapper {
+              display: none;
+              position: absolute;
+              top: 10px;
+              right: 13px;
+            }
+            .feedback {
+              color: #F44336;
+              font-size: 14px;
+              text-align: center;
+              margin-top: 15px;
+            }
+          }
         }
       }
     }
