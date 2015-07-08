@@ -3,13 +3,6 @@
 
 /*----------------------Extra Fonts--------------------------*/
 @font-face {
-	font-family: 'RobotoItalic';
-	src: url('../../font/RobotoCondensed-LightItalic.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal; 
-}
-
-@font-face {
   font-family: 'OstrichSans';
   src: url('../../font/OstrichSans-Bold.otf') format('opentype');
   font-weight: normal;
@@ -866,7 +859,7 @@ main {
           }
         }
       }
-      .form-header {
+      .new-project-form-header {
         width: 95%;
         color: #37474f;
         margin: 30px auto 0;
@@ -874,35 +867,49 @@ main {
         font-weight: 600;
         padding: 20px;
       }
-      .form-wrapper {
+      .new-project-form-wrapper {
         width: 95%;
         color: #37474f;
         padding: 25px 50px;
         margin: 0 auto 10px;
-        .dropdown-content li > a, .dropdown-content li > span {
-          font-size: 1rem;
-          padding: 0.75rem;
-        }
-        .select-wrapper input.select-dropdown {
-          color: #9E9E9E;
-        }
-        .non-admin {
-          label {
-            margin-top: 20px;
-            margin-bottom: 10px;
+        form {
+          overflow: hidden;
+          .dropdown-content li > a, .dropdown-content li > span {
+            font-size: 1rem;
+            padding: 0.75rem;
           }
-          .team {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 2px;
-            border: 1px solid #BDBDBD;
-            .team-member {
-              float: left;
-              background-color: #009688;
-              color: #F5F5F5;
+          .select-wrapper input.select-dropdown {
+            color: #9E9E9E;
+          }
+          .non-admin {
+            label {
+              margin-top: 20px;
+              margin-bottom: 10px;
+            }
+            .team {
               padding: 10px;
-              margin: 10px;
+              margin-bottom: 20px;
               border-radius: 2px;
+              border: 1px solid #9E9E9E;
+              .team-member {
+                float: left;
+                background-color: #009688;
+                color: #F5F5F5;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 2px;
+              }
+            }
+          }
+          .admin {
+           margin-top: 20px;
+            .tagedit-list {
+              border: none;
+            }
+            .input-field {
+              border-bottom: 1px solid #9E9E9E;
+              padding-bottom: 10px;
+              margin-bottom: 15px;
             }
           }
         }
@@ -1029,6 +1036,9 @@ footer.page-footer {
   }
   main.index .bgNavbar .navigation {
     display: none;
+  }
+  main #main-body-container .content-container .new-project-form-wrapper {
+    padding: 20px 15px;
   }
 }
 @media only screen and (max-width: 1100px) {

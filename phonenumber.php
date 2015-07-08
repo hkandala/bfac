@@ -1,11 +1,9 @@
 <?php
     require_once 'include/php/connect.php';
-    $result=$GLOBALS['db']->raw('Select Name,Phoneno from users LIMIT 40');
-    $BigArray= array();
+    $result=$GLOBALS['db']->raw('Select Name,Phoneno from users');
+    $i=1;
     while($row = $result->fetch_assoc()) {
-        $temp=array();
-        $temp['name']=$row['Name'];
-        $temp['phone']=$row['Phoneno'];
-        array_push($BigArray, $temp);
+        echo $i . ") Name: " . $row['Name'];
+        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number: ".$row['Phoneno'] . "<br>";
+        $i++;
     }
-    echo json_encode($BigArray);

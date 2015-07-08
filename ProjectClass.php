@@ -1,7 +1,8 @@
 <?php
 require_once './include/php/connect.php';
 require_once 'ThreadClass.php';
-class Project{
+
+class Project {
 	protected $id;
 	public $status;
 	public $challengeId;
@@ -10,13 +11,12 @@ class Project{
 	public $requirement;
 	public $whymak;
 
-
-	function __construct($id){
+	function __construct($id) {
 		$this->id = $id;
 		$this->status = 0;
 	}
 
-	function newProject($title,$challengeId, $abstract,$requirement,$whymak){
+	function newProject($title, $challengeId, $abstract, $requirement, $whymak) {
 		$this->challengeId = $challengeId;
 		$this->title = $title;
 		$this->abstract = $abstract;
@@ -24,19 +24,20 @@ class Project{
 		$this->whymak = $whymak;
 	}
 
-	function insertProject(){
+	function insertProject() {
 		$GLOBALS['db']->insert('projects','ProjectId, Title, ChallengeId, Abstract, Status, WhyMakeathon, Requirement',"'$this->id', '$this->title', $this->challengeId, '$this->abstract', $this->status, '$this->whymak', '$this->requirement'");
 	}
 
-	function deleteProject(){
+	function deleteProject() {
 		$GLOBALS['db']->delete('projects','ProjectId',"$this->id");
 	}
 
-	function updateProject(){
+	function updateProject() {
 		$query="UPDATE projects SET Title='".$this->title."', ChallengeId=".$this->challengeId.", Abstract='".$this->abstract."', Status=".$this->status.", WhyMakeathon='".$this->whymak."', Requirement='".$this->requirement."' WHERE ProjectId='".$this->id."'";
 		$GLOBALS['db']->raw($query);
 	}
-	function getProject($proId){
+
+	function getProject($proId) {
 		$result = $GLOBALS['db']->select('*','projects','ProjectId',"$proId");
 		$row = $result->fetch_assoc();
 		$this->id = $row['ProjectId'];
@@ -48,7 +49,7 @@ class Project{
 		$this->whymak = $row['WhyMakeathon'];
 	}
 
-	function getTeamAdmin($proId,$id){
+	function getTeamAdmin($proId, $id) {
 		$result = $GLOBALS['db']->raw("select * from user_project where ProjectId='$proId' AND UserId='$id'");
 		$row = $result->fetch_assoc();
 		return $row;
@@ -75,7 +76,6 @@ class Project{
 		$GLOBALS['db']->delete('project_thread','ThreadId',"$threadId");
 	}
 	*/
-
 	function getId() {
 		return $this->id;
 	}
