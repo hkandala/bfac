@@ -154,6 +154,9 @@ $(document).ready(function () {
         $(".menu #NewProject").click(function() {
             changeTab('NewProject', 'addNewProject.php');
         });
+        $(".menu #EditProject").click(function() {
+            changeTab('EditProject', 'editProject.php');
+        });
     }
 });
 
