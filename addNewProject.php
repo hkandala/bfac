@@ -2,9 +2,7 @@
     require_once 'include/php/connect.php';
     require_once 'ProjectClass.php';
     require_once 'UserClass.php';
-    require_once 'AllClass.php';
     require_once 'sessionCheck.php';
-    $allObj = new All;
 ?>
 <script>
     $(document).ready(function(e){
@@ -118,40 +116,45 @@
         return (titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate());
     }
 </script>
+<?php
+    if(isset($_GET['id']) && !empty($_GET['id'])) {
+        $project = new Project($_GET['id']);
+        $project->getProject($_GET['id']);
+        $title = $project->title;
+        $challengeId = $project->challengeId;
+        $abstract = $project->abstract;
+        $requirement = $project->requirement;
+        $whymak = $project->whymak;
+        $team = $project->getTeamAdmin($_GET['id'], $curUser->id);
+    } else {
+        if(isset($_GET['challengeId']) && !empty($_GET['challengeId'])) {
+            $challengeId = $_GET['challengeId'];
+        } else {
+            $challengeId="";
+        }
+        $title="";
+        $team = "";
+        $abstract="";
+        $requirement="";
+        $whymak="";
+    }
+?>
 <div class="row">
     <div class="col s12">
-        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> Add a Project</div>
+        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> <?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo 'Edit Project <a class="modal-trigger right btn red" href="#delete" style="font-size: 14px">Delete</a>'; } else { echo 'Add a Project'; }?></div>
     </div>
     <div class="col s12">
         <div class="card-panel new-project-form-wrapper">
             <form id="abstractForm" name="abstractform" action="submitAbstract.php" method="post">
                 <?php
                     if(isset($_GET['id']) && !empty($_GET['id'])) {
-                       $project = new Project($_GET['id']);
-                       $project->getProject($_GET['id']);
-                       $title = $project->title;
-                       $challengeId = $project->challengeId;
-                       $abstract = $project->abstract;
-                       $requirement = $project->requirement;
-                       $whymak = $project->whymak;
-                       $team = $project->getTeamAdmin($_GET['id'], $curUser->id);
-                    } else {
-                       if(isset($_GET['challengeId']) && !empty($_GET['challengeId'])) {
-                            $challengeId = $_GET['challengeId'];
-                       } else {
-                            $challengeId="";
-                       }
-                       $title="";
-                       $team = "";
-                       $abstract="";
-                       $requirement="";
-                       $whymak="";
+                        echo '<input type="hidden" name="id" value="' . $_GET['id'] . '" />';
                     }
                 ?>
                 <div class="input-field col s12">
                     <i class="mdi-action-assignment prefix"></i>
                     <input type = "text" name="title" id="form-title" class="validate" value='<?php echo $title;?>'/>
-                    <label for = "form-title">App / Project Title</label>
+                    <label <?php if($title!=''){ echo 'class="active"'; }?> for = "form-title">App / Project Title</label>
                 </div>
                 <div class="input-field col s12 select-challenge">
                     <i class="mdi-action-extension prefix"></i>
@@ -195,18 +198,18 @@
                                 $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='".$_GET['id']."'");
                                 $count = $result->num_rows;
                                 if($count > 1) {
-                                      $i=0;
-                                      while ($row = $result->fetch_assoc()) {
-                                          $user = new User;
-                                          $user->getUser($row['UserId']);
-                                          if($curUser->id == $user->id) {
-                                              continue;
-                                          }
-                                          echo '<input type="text" name="tag['.$i.'-a]" value="'.$user->name.' ('.$user->email.')" class="tag"/>';
-                                          $i++;
-                                      }
+                                    $i=0;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $user = new User;
+                                        $user->getUser($row['UserId']);
+                                        if($curUser->id == $user->id) {
+                                          continue;
+                                        }
+                                        echo '<input type="text" name="tag['.$i.'-a]" value="'.$user->name.' ('.$user->email.')" class="tag"/>';
+                                        $i++;
+                                    }
                                   } else {
-                                      echo "<input type='text' value='' class='tag' name='tag[]'/>";
+                                        echo "<input type='text' value='' class='tag' name='tag[]'/>";
                                   }
                             } else {
                         ?>
@@ -247,17 +250,17 @@
                 <div class="input-field col s12">
                     <i class="mdi-action-description prefix"></i>
                     <textarea name="abstract" id="form-abstract" class="validate materialize-textarea"><?php echo str_replace( '<br />', "\n", $abstract )?></textarea>
-                    <label for = "form-abstract">Abstract</label>
+                    <label <?php if($abstract!=''){ echo 'class="active"'; }?> for = "form-abstract">Abstract</label>
                 </div>
                 <div class="input-field col s12">
                     <i class="mdi-action-speaker-notes prefix"></i>
                     <textarea name="requirement" id="form-requirements" class="validate materialize-textarea"><?php echo str_replace( "<br />", "\n",$requirement);?></textarea>
-                    <label for = "form-requirements">Requirements</label>
+                    <label <?php if($requirement!=''){ echo 'class="active"'; }?> for = "form-requirements">Requirements</label>
                 </div>
                 <div class="input-field col s12">
                     <i class="mdi-action-announcement prefix"></i>
                     <textarea name="whymak" id="form-whymakeathon" class="validate materialize-textarea"><?php echo str_replace( '<br />', "\n",$whymak);?></textarea>
-                    <label for = "form-whymakeathon">Why Build For A Change?</label>
+                    <label <?php if($whymak!=''){ echo 'class="active"'; }?> for = "form-whymakeathon">Why Build For A Change?</label>
                 </div>
                 <div class="col s12">
                     <div class="loadingButton">

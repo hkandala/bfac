@@ -1,7 +1,7 @@
 <?php
     require_once 'include/php/connect.php';
     require_once 'ProjectClass.php';
-    require 'sessionCheck.php';
+    require_once 'sessionCheck.php';
     session_regenerate_id();
 
     if(isset($_POST['title']) && isset($_POST['abstract']) && isset($_POST['whymak']) && !empty($_POST['title']) && !empty($_POST['abstract']) && !empty($_POST['whymak'])) {
@@ -30,26 +30,30 @@
             $project = new Project($_POST['id']);
             $project->newProject($title, $challengeId, $abstract, $requirement, $whymak);
             $project->updateProject();
-            $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='".$_POST['id']."'");
-            $emailsChecked = array();
-            while ($row = $result->fetch_assoc()) {
-                $user = new User;
-                $user->getUser($row['UserId']);
-                if(!in_array($user->email, $emails)) {
-                    if($row['Status']!=0) {
-                        $user->deleteUserFromProject($_POST['id']);
+            $resultCheck = $GLOBALS['db']->raw('SELECT Status FROM user_project WHERE UserId=' . $curUserId . ' AND ProjectId="' . $_POST['id'] . '"');
+            $rowCheck = $resultCheck->fetch_assoc();
+            if($rowCheck['Status'] == 0) {
+                $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='" . $_POST['id'] . "'");
+                $emailsChecked = array();
+                while ($row = $result->fetch_assoc()) {
+                    $user = new User;
+                    $user->getUser($row['UserId']);
+                    if (!in_array($user->email, $emails)) {
+                        if ($row['Status'] != 0) {
+                            $user->deleteUserFromProject($_POST['id']);
+                        } else {
+                            array_push($emailsChecked, $user->email);
+                        }
                     } else {
                         array_push($emailsChecked, $user->email);
                     }
-                } else {
-                    array_push($emailsChecked, $user->email);
                 }
-            }
-            $emailsRemaining = array_diff($emails, $emailsChecked);
-            foreach ($emailsRemaining as $emailid) {
-                $member = new User;
-                $member->getUserFromUserName($emailid);
-                $member->addProject(session_id(), 1);
+                $emailsRemaining = array_diff($emails, $emailsChecked);
+                foreach ($emailsRemaining as $emailid) {
+                    $member = new User;
+                    $member->getUserFromUserName($emailid);
+                    $member->addProject($_POST['id'], 1);
+                }
             }
             echo 'Project Successfully Updated!';
         } else {

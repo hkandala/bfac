@@ -813,6 +813,7 @@ main {
           width: 90%;
           margin: 0 auto;
           line-height: 1.5;
+          background-color: #FFFFFF;
           li {
             .collapsible-header {
               font-weight: 600;
@@ -882,15 +883,15 @@ main {
             color: #9E9E9E;
           }
           .non-admin {
+            margin-top: 20px;
             label {
-              margin-top: 20px;
               margin-bottom: 10px;
             }
             .team {
               padding: 10px;
               margin-bottom: 20px;
               border-radius: 2px;
-              border: 1px solid #9E9E9E;
+              border-bottom: 1px solid #9E9E9E;
               .team-member {
                 float: left;
                 background-color: #009688;
@@ -941,7 +942,54 @@ main {
           }
         }
       }
-
+      .edit-project-wrapper {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        color: #37474f;
+        .edit-project-header {
+          margin-bottom: 0;
+          margin-top: 50px;
+          h2 {
+            font-size: 25px;
+            font-weight: 600;
+            padding-bottom: 20px;
+          }
+        }
+        .edit-project-form-wrapper {
+          overflow: visible;
+          margin: 0;
+          .input-field {
+            padding: 0 25px;
+          }
+          .dropdown-content li > a, .dropdown-content li > span {
+            font-size: 1rem;
+            padding: 0.75rem;
+          }
+          .btn-large {
+            margin-top: 1rem;
+          }
+          .no-projects {
+            text-align: center;
+            padding: 30px 10px;
+            h4 {
+              color: #F44336;
+              font-size: 22px;
+              font-weight: 600;
+            }
+            h5 {
+              color: #37474f;
+              font-weight: 600;
+              span {
+                cursor: pointer;
+              }
+              span:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

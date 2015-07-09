@@ -1,8 +1,6 @@
 <?php
     require_once 'include/php/connect.php';
-    require 'sessionCheck.php';
-    require_once 'AllClass.php';
-    $allObj = new All;
+    require_once 'sessionCheck.php';
 ?>
 
 <div class="row">

@@ -144,10 +144,10 @@
                             <a href = "#" id="MyProjects"><i class="mdi-av-my-library-books"></i> <span>My Projects</span></a>
                         </li>
                         <li>
-                            <a href = "#" id="NewProject"><i class="mdi-av-my-library-add"></i> <span>New Project</span></a>
+                            <a href = "#" id="EditProject"><i class="mdi-editor-mode-edit"></i> <span>Edit Project</span></a>
                         </li>
                         <li>
-                            <a href = "#" id="EditProject"><i class="mdi-editor-mode-edit"></i> <span>Edit Project</span></a>
+                            <a href = "#" id="NewProject"><i class="mdi-av-my-library-add"></i> <span>New Project</span></a>
                         </li>
                     </ul>
                     <div class="madeWith">

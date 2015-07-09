@@ -35,7 +35,6 @@ class User {
 
 	function updateStatus($no) {
 		$this->status = $no;
-		//Update User_Project Table
 	}
 	
 	function addProject($projectId, $status) {
@@ -53,7 +52,7 @@ class User {
 
     function deleteUserFromProject($projectId) {
         $query = "DELETE FROM user_project WHERE UserId='$this->id' AND ProjectId='$projectId'";
-        $GLOBALS['db']->query($query);
+        $GLOBALS['db']->raw($query);
     }
 
 	function deleteProject($projectId) {
@@ -94,7 +93,6 @@ class User {
 		$this->college = $row['College'];
 		$this->branch = $row['Branch'];
 		$this->phoneno = $row['Phoneno'];
-		
 	}
 	
 	function getUser($userId) {
