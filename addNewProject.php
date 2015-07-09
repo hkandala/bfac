@@ -16,11 +16,50 @@
             e.preventDefault();
             return abstractFormValidate();
         });
+
+        $("#abstractForm #form-title").blur(function () {
+            if(!titleValidate()) {
+                $("#abstractForm #form-title").addClass("invalid").removeClass("valid");
+            } else {
+                $("#abstractForm #form-title").addClass("valid").removeClass("invalid");
+            }
+        });
+        $("#abstractForm .select-challenge").click(function () {
+            if(!challengeValidate()) {
+                $("#abstractForm .select-dropdown").css("border-color", "#F44336");
+            } else {
+                $("#abstractForm .select-dropdown").css("border-color", "#4CAF50");
+            }
+        });
+        $("#abstractForm .tagedit-list").click(function () {
+            $("#abstractForm .select-team-members").css("border-color", "#4CAF50");
+        });
+        $("#abstractForm #form-abstract").blur(function () {
+            if(!abstractValidate()) {
+                $("#abstractForm #form-abstract").addClass("invalid").removeClass("valid");
+            } else {
+                $("#abstractForm #form-abstract").addClass("valid").removeClass("invalid");
+            }
+        });
+        $("#abstractForm #form-requirements").blur(function () {
+            $("#abstractForm #form-requirements").addClass("valid").removeClass("invalid");
+        });
+        $("#abstractForm #form-whymakeathon").blur(function () {
+            if(!whyBfacValidate()) {
+                $("#abstractForm #form-whymakeathon").addClass("invalid").removeClass("valid");
+            } else {
+                $("#abstractForm #form-whymakeathon").addClass("valid").removeClass("invalid");
+            }
+        });
     });
 
     function titleValidate() {
         var content = $("#abstractForm #form-title").val();
         return (content.length > 0);
+    }
+    function challengeValidate() {
+        var id = $("#abstractForm #form-challenge").val();
+        return id != null;
     }
     function abstractValidate() {
         var content = $("#abstractForm #form-abstract").val();
@@ -30,34 +69,37 @@
         var content = $("#abstractForm #form-whymakeathon").val();
         return (content.length > 0);
     }
-    function challengeValidate() {
-        var id = $("#abstractForm #form-challenge").val();
-        return id != null;
-    }
     function abstractFormValidate () {
-        if (!challengeValidate()) {
-            $("#abstractForm .feedback").html("Please select a challenge");
-        }
         if (!titleValidate()) {
             $("#abstractForm #form-title").addClass("invalid").removeClass("valid");
             $("#abstractForm .feedback").html("Please check all the fields once");
         }
+        if (!challengeValidate()) {
+            $("#abstractForm .select-dropdown").css("border-color", "#F44336");
+            $("#abstractForm .feedback").html("Please check all the fields once");
+        }
+        $("#abstractForm .select-team-members").css("border-color", "#4CAF50");
         if (!abstractValidate()) {
             $("#abstractForm #form-abstract").addClass("invalid").removeClass("valid");
             $("#abstractForm .feedback").html("Please check all the fields once");
         }
+        $("#abstractForm #form-requirements").addClass("valid").removeClass("invalid");
         if (!whyBfacValidate()) {
             $("#abstractForm #form-whymakeathon").addClass("invalid").removeClass("valid");
             $("#abstractForm .feedback").html("Please check all the fields once");
         }
+
         if(titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate()) {
-            var abstractObj = {
-                title: $("#abstractForm #form-title").val(),
-                challenge: $("#abstractForm #form-challenge").val(),
-                abstract: $("#abstractForm #form-abstract").val(),
-                requirement: $("#abstractForm #form-requirements").val(),
-                whymak: $("#abstractForm #form-whymakeathon").val(),
-            };
+            var inputs = $("#abstractForm").serializeArray();
+            var abstractObj = {};
+            var tagsCount = 0;
+            for(var i=0; i<inputs.length; i++) {
+                if(inputs[i].name == 'tag[]') {
+                    inputs[i].name = 'tag[' + tagsCount +']';
+                    tagsCount++;
+                }
+                abstractObj[inputs[i].name] = inputs[i].value;
+            }
             $("#abstractForm .loadingButton .preloader-wrapper").fadeIn('fast');
             $.post('submitAbstract.php', abstractObj, function(response) {
                 if(response != '') {
@@ -75,7 +117,6 @@
 
         return (titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate());
     }
-
 </script>
 <div class="row">
     <div class="col s12">
@@ -112,7 +153,7 @@
                     <input type = "text" name="title" id="form-title" class="validate" value='<?php echo $title;?>'/>
                     <label for = "form-title">App / Project Title</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field col s12 select-challenge">
                     <i class="mdi-action-extension prefix"></i>
                     <select name="challenge" id="form-challenge">
                         <option value="0" disabled
@@ -148,7 +189,7 @@
                     <div class="col s12">
                         <label class="form-team"><i class="mdi-social-people"></i>&nbsp;&nbsp;Team Members</label>
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 select-team-members">
                         <?php
                             if(isset($_GET['id']) && $team['Status'] == 0) {
                                 $result = $GLOBALS['db']->raw("SELECT * FROM user_project WHERE ProjectId='".$_GET['id']."'");

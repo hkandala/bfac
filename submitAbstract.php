@@ -19,9 +19,11 @@
             $tags = $_POST['tag'];
             foreach ($tags as $key) {
                 $temp = explode('(', $key);
-                $temp_ex = explode(')', $temp[1]);
-                if($curUser->email != $temp_ex[0] && $GLOBALS['db']->select('*','users','Email',"$temp_ex[0]") && $temp_ex[0] != '')
-                    array_push($emails, $temp_ex[0]);
+                if(isset($temp[1])) {
+                    $temp_ex = explode(')', $temp[1]);
+                    if($curUser->email != $temp_ex[0] && $GLOBALS['db']->select('*','users','Email',"$temp_ex[0]") && $temp_ex[0] != '')
+                        array_push($emails, $temp_ex[0]);
+                }
             }
         }
         if(isset($_POST['id'])) {
