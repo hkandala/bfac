@@ -169,7 +169,7 @@
 </script>
 <div class="row">
     <div class="col s12">
-        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> <?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo 'Edit Project'; if($team['Status'] == 0) { echo '<a class="modal-trigger right btn red" href="#delete" style="font-size: 14px">Delete</a>';} } else { echo 'Add a Project'; }?></div>
+        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> <?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo 'Edit Project'; if($team['Status'] == 0) { echo '<a class="modal-trigger right btn red hide-on-small-and-down" href="#delete" style="font-size: 14px">Delete</a> <a class="modal-trigger right hide-on-med-and-up" href="#delete" style="font-size: 25px; color: #37474F"><i class="mdi-action-delete"></i></a>';} } else { echo 'Add a Project'; }?></div>
     </div>
     <div class="col s12">
         <div class="card-panel new-project-form-wrapper">

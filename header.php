@@ -157,9 +157,9 @@
                 <div class="modal" id="delete">
                     <div class="modal-content">Are you sure that you want to permanently delete this project?</div>
                     <div class="modal-footer">
-                        <div class="feedback left"></div>
-                        <div class="btn-flat green">Cancel</div>
-                        <div class="btn-flat red">Delete</div>
+                        <div class="feedback"></div>
+                        <div class="btn-flat green"><p class="hide-on-small-and-down">Cancel</p><i class="mdi-content-clear hide-on-med-and-up"></i></div>
+                        <div class="btn-flat red"><p class="hide-on-small-and-down">Delete</p><i class="mdi-action-done hide-on-med-and-up"></i></div>
                     </div>
                 </div>
             </header>
