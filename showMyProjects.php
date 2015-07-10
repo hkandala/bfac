@@ -13,12 +13,16 @@
         $n= $result->num_rows;
         if($n != 0) {
             while($row = $result->fetch_assoc()) {
+                $challenge = $GLOBALS['db']->raw('SELECT * FROM challenges WHERE Id="' . $row['ChallengeId'] . '"');
+                $challengeStatement = $challenge->fetch_assoc();
                 echo ('
                 <li>
                     <div class="collapsible-header">' . $row["Title"] . '</div>
                     <div class="collapsible-body">
                         <h3>Abstract</h3>
                         <div class="abstract">'. $row["Abstract"] .'</div>
+                        <h3>Challenge</h3>
+                        <div class="challenge">'. $challengeStatement['Statement'] .'</div>
                         <h3>Requirements</h3>
                         <div class="req">'. $row["Requirement"] .'</div>
                         <h3>Why Makeathon?</h3>
