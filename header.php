@@ -154,6 +154,14 @@
                         <p>Made with <span><i class="mdi-action-favorite"></i></span> by IEEE - VIT Team</p>
                     </div>
                 </div>
+                <div class="modal" id="delete">
+                    <div class="modal-content">Are you sure that you want to permanently delete this project?</div>
+                    <div class="modal-footer">
+                        <div class="feedback left"></div>
+                        <div class="btn-flat green">Cancel</div>
+                        <div class="btn-flat red">Delete</div>
+                    </div>
+                </div>
             </header>
             <main class="z-depth-1-half ' . $className . '">
         ');

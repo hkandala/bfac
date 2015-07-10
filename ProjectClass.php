@@ -29,7 +29,7 @@ class Project {
 	}
 
 	function deleteProject() {
-		$GLOBALS['db']->delete('projects','ProjectId',"$this->id");
+        $GLOBALS['db']->raw('DELETE FROM projects WHERE ProjectId="' . $this->id . '"');
 	}
 
 	function updateProject() {

@@ -3,9 +3,31 @@
     require_once 'ProjectClass.php';
     require_once 'UserClass.php';
     require_once 'sessionCheck.php';
+
+    if(isset($_GET['id']) && !empty($_GET['id'])) {
+        $project = new Project($_GET['id']);
+        $project->getProject($_GET['id']);
+        $title = $project->title;
+        $challengeId = $project->challengeId;
+        $abstract = $project->abstract;
+        $requirement = $project->requirement;
+        $whymak = $project->whymak;
+        $team = $project->getTeamAdmin($_GET['id'], $curUser->id);
+    } else {
+        if(isset($_GET['challengeId']) && !empty($_GET['challengeId'])) {
+            $challengeId = $_GET['challengeId'];
+        } else {
+            $challengeId="";
+        }
+        $title="";
+        $team = "";
+        $abstract="";
+        $requirement="";
+        $whymak="";
+    }
 ?>
 <script>
-    $(document).ready(function(e){
+    $(document).ready(function(e) {
         $("#abstractForm" ).find('input.tag').tagedit({
           autocompleteURL: 'team_autocomplete.php',
           allowEdit: false
@@ -49,6 +71,35 @@
                 $("#abstractForm #form-whymakeathon").addClass("valid").removeClass("invalid");
             }
         });
+
+        initModal();
+        $("#delete .modal-footer .btn-flat.green").click(function () {
+            $("#delete").closeModal();
+        });
+        <?php
+            if(isset($_GET['id']) && $team['Status'] == 0) {
+                echo '
+                    var projectId = {
+                        id: "' . $_GET['id'] . '"
+                    };
+                    $("#delete .modal-footer .btn-flat.red").off();
+                    $("#delete .modal-footer .btn-flat.red").on("click", function () {
+                        $.post("deleteProject.php", projectId, function (data) {
+                            if(data == "Success") {
+                                $("#delete").closeModal();
+                                changeTab("EditProject", "editProject.php");
+                            } else if (data == "Failed") {
+                                $("#delete .modal-footer .feedback").html("Failed, Please, try again later.");
+                            } else {
+                                $("#delete .modal-footer .feedback").html("Some unknown error occured.");
+                            }
+                        }).fail(function () {
+                            $("#delete .modal-footer .feedback").html("Unable to connect to network.");
+                        });
+                    });
+                ';
+            }
+        ?>
     });
 
     function titleValidate() {
@@ -116,32 +167,9 @@
         return (titleValidate() && abstractValidate() && whyBfacValidate() && challengeValidate());
     }
 </script>
-<?php
-    if(isset($_GET['id']) && !empty($_GET['id'])) {
-        $project = new Project($_GET['id']);
-        $project->getProject($_GET['id']);
-        $title = $project->title;
-        $challengeId = $project->challengeId;
-        $abstract = $project->abstract;
-        $requirement = $project->requirement;
-        $whymak = $project->whymak;
-        $team = $project->getTeamAdmin($_GET['id'], $curUser->id);
-    } else {
-        if(isset($_GET['challengeId']) && !empty($_GET['challengeId'])) {
-            $challengeId = $_GET['challengeId'];
-        } else {
-            $challengeId="";
-        }
-        $title="";
-        $team = "";
-        $abstract="";
-        $requirement="";
-        $whymak="";
-    }
-?>
 <div class="row">
     <div class="col s12">
-        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> <?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo 'Edit Project <a class="modal-trigger right btn red" href="#delete" style="font-size: 14px">Delete</a>'; } else { echo 'Add a Project'; }?></div>
+        <div class="new-project-form-header card-panel"><i class="mdi-av-my-library-add"></i> <?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo 'Edit Project'; if($team['Status'] == 0) { echo '<a class="modal-trigger right btn red" href="#delete" style="font-size: 14px">Delete</a>';} } else { echo 'Add a Project'; }?></div>
     </div>
     <div class="col s12">
         <div class="card-panel new-project-form-wrapper">

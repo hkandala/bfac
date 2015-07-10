@@ -52,6 +52,7 @@ class DbObject {
 		$values = $this->convert($value);
 		
 		$query = "DELETE FROM ".$table." WHERE ".$key." IN (".$values.")";
+        echo $query;
 		$result = $this->db->query($query);
 		return $result;
 	}
@@ -74,4 +75,9 @@ class DbObject {
 		$result = $this->db->query($query);
 		return $result;
 	}
+
+    function affected_rows () {
+        $result = $this->db->affected_rows;
+        return $result;
+    }
 }

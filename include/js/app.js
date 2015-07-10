@@ -190,6 +190,10 @@ function initCollapsible () {
     });
 }
 
+function initModal () {
+    $('.modal-trigger').leanModal();
+}
+
 function initNoProjects () {
     $(".content-container .no-projects h5 span").click(function() {
         changeTab('NewProject', 'addNewProject.php');
