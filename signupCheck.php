@@ -18,7 +18,11 @@
             echo ('This email is already registered');
         } else if(($pass != NULL) && ($name != NULL) && ($email != NULL)) {
             $myUser = new User;
-            $myUser->newUser($name,$email,$pass,$college,$branch,$phoneno);
+
+            //Hashing
+            $myUser->newUser($name,$email,password_hash($pass,PASSWORD_DEFAULT),$college,$branch,$phoneno);
+
+            //$myUser->newUser($name,$email,$pass,$college,$branch,$phoneno);
             $myUser->insertUser();
             $myUser->getUserFromUserName($email);
             echo ('You have successfully registered');

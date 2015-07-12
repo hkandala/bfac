@@ -10,7 +10,9 @@
         $no = $result->num_rows;
         if($no==1) {
             $row = $result->fetch_assoc();
-            if($pass != $row['Pass']) {
+            //HashCheck
+            if(!(password_verify($pass,$row['Pass']))) {
+            //if($pass != $row['Pass'])
                 echo ('Wrong Password, Please try again');
             } else {
 		        $myUser = new User;
