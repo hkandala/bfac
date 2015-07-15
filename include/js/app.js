@@ -1,5 +1,6 @@
 /*----------------------Main Script--------------------------*/
 var windowHeight = $(window).height();
+var windowWidth = $(window).width();
 var mainBodyHeight = windowHeight - 90;
 var signUpBlock = false;
 
@@ -44,6 +45,13 @@ $(document).ready(function () {
             }
         }
     });
+    if(windowWidth > 767) {
+        var options = [
+            {selector: 'main.index .news-wrapper .news-container', offset: 0, callback: 'showNews()' },
+            {selector: 'main.index .organizers-wrapper .organizers', offset: 0, callback: 'showOrganizers()' }
+        ];
+        Materialize.scrollFire(options);
+    }
     $('.modal-trigger').leanModal();
     $('a[href=#login]').click(function () {
         $('#login .modal-content .login-block').show();
@@ -86,7 +94,18 @@ $(document).ready(function () {
 
 $(window).load(function() {
     $('.loading').fadeOut(300);
+    $('main.index .bg .tempHover').css({ "opacity": "1", "transform": "translateY(-50%)"});
+    $('main.index .bg .startProject').css({ "opacity": "1", "transform": "translate(-50%, -50%)"});
 });
+
+function showNews() {
+    $('main.index .news-wrapper .news-container').css({ "opacity": "1", "transform": "none"});
+}
+
+function showOrganizers() {
+    console.log("check");
+    $('main.index .organizers-wrapper .organizers').css({ "opacity": "1", "transform": "none"});
+}
 
 function loginEmailValidate() {
     var mail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,4}))$/;

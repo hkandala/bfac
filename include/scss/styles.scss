@@ -527,7 +527,9 @@ main.index {
       position: absolute;
       width: 100%;
       cursor: pointer;
-      transform: translateY(-50%);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.7s, opacity 1s;
       h1 {
         display: block;
         font-family: OstrichSans, sans-serif;
@@ -577,8 +579,9 @@ main.index {
       padding: 25px;
       border-radius: 2px;
       border: 1px solid #F5F5F5;
-      transform: translate(-50%, -50%);
-      transition: background-color 0.3s;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      transition: background-color 0.3s, opacity 1s 0.3s, transform 0.7s 0.3s;
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
         transition: background-color 0.3s;
@@ -598,6 +601,9 @@ main.index {
       margin: 20px auto;
     }
     .news-container {
+      opacity: 0;
+      transform: translateY(10%);
+      transition: transform 0.7s, opacity 1s;
       .news-item {
         width: 100%;
         max-width: 1100px;
@@ -639,6 +645,9 @@ main.index {
       width: 90%;
       max-width: 960px;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(10%);
+      transition: transform 0.7s, opacity 1s;
       h2 {
         padding: 10px;
         font-size: 25px;
@@ -784,10 +793,11 @@ main {
         .challenges-header {
           margin-bottom: 0;
           margin-top: 50px;
+          line-height: 1.5;
           h2 {
             font-size: 25px;
             font-weight: 600;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
           }
         }
         ul {
@@ -969,10 +979,11 @@ main {
         .edit-project-header {
           margin-bottom: 0;
           margin-top: 50px;
+          line-height: 1.5;
           h2 {
             font-size: 25px;
             font-weight: 600;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
           }
         }
         .edit-project-form-wrapper {
@@ -1135,6 +1146,22 @@ footer.page-footer {
   main #main-body-container .content-container .new-project-form-wrapper {
     padding: 20px 15px;
   }
+  main.index .bg .tempHover {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+  main.index .bg .startProject {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  main.index .news-wrapper .news-container {
+    opacity: 1;
+    transform: none;
+  }
+  main.index .organizers-wrapper .organizers {
+    opacity: 1;
+    transform: none;
+  }
 }
 @media only screen and (max-width: 1100px) {
   .fixedNav {
@@ -1186,6 +1213,9 @@ footer.page-footer {
     margin-top: 30px;
   }
   main #main-body-container .content-container .projects-wrapper .projects-main-header {
+    margin-top: 30px;
+  }
+  main #main-body-container .content-container .edit-project-wrapper .edit-project-header {
     margin-top: 30px;
   }
   main #main-body-container .content-container .form-header {

@@ -30,7 +30,8 @@
         while($row = $result->fetch_assoc()) {
       		$subresult = $GLOBALS['db']->raw("SELECT * FROM challenges WHERE Id=".$row['ChallengeId']);
       		while ($subrow = $subresult->fetch_assoc()) {
-                echo '<div class="challenges-container card-panel"><a href ="forum.php?challengeId=' . $subrow['Id'] . '" >' . $subrow['Statement'] . '</a></div>';
+                //echo '<div class="challenges-container card-panel"><a href ="forum.php?challengeId=' . $subrow['Id'] . '" >' . $subrow['Statement'] . '</a></div>';
+                echo '<div class="challenges-container card-panel"><a href ="#" >' . $subrow['Statement'] . '</a></div>';
       		}
         }
 
