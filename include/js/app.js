@@ -12,6 +12,9 @@ $(document).ready(function () {
     $('#menuDashboard').click(function () {
         window.location = 'desking.php';
     });
+    $("#login .modal-content .mdi-navigation-close").click(function () {
+        $("#login").closeModal();
+    });
     $('.menu-button').on("click", function () {
         $('body').toggleClass('nav_is_visible');
     });

@@ -32,6 +32,7 @@
                     </div>
                     <div id="login" class="modal">
                         <div class="modal-content">
+                            <i class="mdi-navigation-close"></i>
                             <div class="login-block">
                                 <h2>Login</h2>
                                 <form class="login-form" action="loginCheck.php" method="post">
