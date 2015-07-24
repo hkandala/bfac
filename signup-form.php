@@ -209,7 +209,15 @@
             };
             $(".signup-form .loadingButton .preloader-wrapper").fadeIn('fast');
             $.post('signupCheck.php', signUpObj, function(response) {
-                if(response != '') {
+                if(response == "You have successfully registered") {
+                    $(".signup-form .loadingButton .preloader-wrapper").fadeOut('fast');
+                    $('.signup-form .feedback').html("You have successfully registered.");
+                    setTimeout(function () {
+                        $('#login .modal-content .login-block').show();
+                        $('#login .progress').hide();
+                        $('#login .modal-content .signup-block').hide();
+                    }, 1000);
+                } else if(response != '') {
                     $(".signup-form .loadingButton .preloader-wrapper").fadeOut('fast');
                     $('.signup-form .feedback').html(response);
                 } else {

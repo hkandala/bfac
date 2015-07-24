@@ -130,6 +130,15 @@ body {
 /*--------------------Site Styles--------------------------*/
 #login {
   max-height: 90%;
+  .mdi-navigation-close {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    font-size: 30px;
+    color: #009688;
+    cursor: pointer;
+    display: none;
+  }
   h2 {
     text-align: center;
     font-family: Roboto, sans-serif;
@@ -1220,6 +1229,15 @@ footer.page-footer {
   }
   main #main-body-container .content-container .form-header {
     margin-top: 20px;
+  }
+  #login {
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    top: 0 !important;
+    .mdi-navigation-close {
+      display: block;
+    }
   }
 }
 @media only screen and (max-width: 350px) {
