@@ -55,8 +55,8 @@
     </div>
     <div class="bg">
         <div class="tempHover">
-            <h1>BUILD FOR A CHANGE</h1>
-            <p><a href = "aboutus.php">We at Build for a Change (BFAC) aim at enabling problem solving through cooperative efforts in a conducive environment. We provide a platform for creative minds to combine their technical dexterity on relevant and significant technical challenges that ameliorate the society. Encouraging students to take up socially assistive projects with consistent support from NGOs and technical mentors, and finding feasible solutions, is the exclusive paramount objective of BFAC.</a></p>
+            <h1>MAKE A THON</h1>
+            <p><a href = "aboutus.php">Make-a-thon is the flagship event of IEEE-VIT. It is a socially assistive hackathon that provides college students a platform to ideate, create and prototype solutions to real world problems. Young engineers from multiple disciplines and technical backgrounds come together for this 30 hour endeavour to Build For A Change.</a></p>
         </div>
         <a class="<?php if(!isset($_SESSION['curUser'])) { echo "modal-trigger "; } ?>startProject" href="<?php if(!isset($_SESSION['curUser'])) { echo "#login"; } else { echo "desking.php"; }?>">START A PROJECT</a>
     </div>
