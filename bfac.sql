@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11.1
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2015 at 01:41 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jul 24, 2015 at 03:34 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `solutions` (
 CREATE TABLE IF NOT EXISTS `threads` (
   `ThreadId` int(11) NOT NULL,
   `Label` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -259,14 +259,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Pass` text NOT NULL,
   `Email` text NOT NULL,
   `Phoneno` bigint(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`UserId`, `College`, `Branch`, `Name`, `Pass`, `Email`, `Phoneno`) VALUES
-(1, 'VIT Vellore', 'CSE 3rd Year', 'Harish Kandala', 'password', 'kandalaharish95@gmail.com', 9790995811);
+(1, 'VIT Vellore', 'CSE 3rd Year', 'Harish Kandala', '$2y$10$IU1VAAMnUKQ0zicYNmw00uqJknyGNHuT/4W4nehnkBeJwiFXldgYG', 'kandalaharish95@gmail.com', 9790995811);
 
 -- --------------------------------------------------------
 
@@ -445,12 +445,12 @@ ALTER TABLE `solutions`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `ThreadId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `ThreadId` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
