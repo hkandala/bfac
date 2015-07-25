@@ -5,9 +5,14 @@ var mainBodyHeight = windowHeight - 90;
 var signUpBlock = false;
 
 $(document).ready(function () {
-	$('.loading').height(windowHeight);
     $('.menu').height(windowHeight);
     $('main.index .bg').height(windowHeight);
+    if(!$('html').hasClass('cssvhunit')) {
+        $('.loading').height(windowHeight);
+        if(windowWidth <= 500) {
+            $('#login').height(windowHeight);
+        }
+    }
     $("#main-body-container").css("min-height", mainBodyHeight);
     $('#menuDashboard').click(function () {
         window.location = 'desking.php';
