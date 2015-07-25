@@ -3,37 +3,29 @@
     <div class="modal-content">
         <h1>Contact Us</h1>
         <div class="row">
-            <div class="col l4 s12">
-                <img src="img/contactus/ashwin.png" class="z-depth-1" alt="Ashwin Vasan"/>
-                <p>Ashwin Vasan</p>
-                <p class="contact">+91 9840565550</p>
+            <p class="desc col s12 center-align">We here at IEEE-VIT believe asking questions is the first step to learning. With this philosophy in mind, we promise to attend to any questions you may have with respect to Make-a-thon and provide any support that you may need. We look forward to your participation in our event.</p>
+            <div class="col l6 m6 s12">
+                <div class="contact-box">
+                    <i class="mdi-communication-phone"></i>
+                    <a href="#">+91 9597599240</a>
+                </div>
             </div>
-            <div class="col l4 s12">
-                <img src="img/contactus/jithu.png" class="z-depth-1" alt="Jithu V P"/>
-                <p>Jithu V P</p>
-                <p class="contact">+91 8608908432</p>
+            <div class="col l6 m6 s12">
+                <div class="contact-box">
+                    <i class="mdi-communication-location-on"></i>
+                    <a href="https://www.google.co.in/maps/place/VIT+University/@12.968836,79.159018,14z/data=!4m2!3m1!1s0x0:0xfef222e5f36ecdeb" target="_blank">VIT University, Vellore</a>
+                </div>
             </div>
-            <div class="col l4 s12">
-                <img src="img/contactus/karthik.png" class="z-depth-1" alt="Karthik Narayan"/>
-                <p>Karthik Narayan</p>
-                <p class="contact">+91 9994840238</p>
+            <div class="col l6 m6 s12">
+                <div class="contact-box">
+                    <i class="mdi-content-mail"></i>
+                    <a href="mailto:ieee.makeathon@gmail.com" target="_top">ieee.makeathon@gmail.com</a>
+                </div>
             </div>
-            <div class="col l4 s12">
-                <img src="img/contactus/radhika.png" class="z-depth-1" alt="Radhika Kapoor"/>
-                <p>Radhika Kapoor</p>
-                <p class="contact">+91 9677463730</p>
-            </div>
-            <div class="col l4 s12">
-                <img src="img/contactus/tushar.png" class="z-depth-1" alt="Tushar Krishna"/>
-                <p>Tushar Krishna</p>
-                <p class="contact">+91 9629870344</p>
-            </div>
-            <div class="col l4 s12 dev">
-                <img src="img/contactus/bg.png" class="z-depth-1" alt="Developers"/>
-                <div>
-                    <h5>Developers</h5>
-                    <a href="https://github.com/harish095" target="_blank">Harish Kandala</a>
-                    <a href="https://github.com/siddhantsomani" target="_blank">Siddhant Somani</a>
+            <div class="col l6 m6 s12">
+                <div class="contact-box">
+                    <i class="mdi-action-thumb-up"></i>
+                    <a href="https://www.facebook.com/Makeathon" target="_blank">facebook.com/Makeathon</a>
                 </div>
             </div>
         </div>
