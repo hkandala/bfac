@@ -9,7 +9,6 @@
     <meta name="keywords" content="Build For A Change, Makeathon, IEEE-VIT, VIT, University, Projects, Students">
     <title>Build For A Change | About Us</title>
     <link rel="icon" href="img/favicon.png">
-    <meta name="theme-color" content="#004d40">
     <!-----------------------------Stylesheets---------------------------->
     <link rel="stylesheet" type="text/css" href="include/css/styles.css">
     <!-------------------------------------------------------------------->

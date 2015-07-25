@@ -16,7 +16,6 @@
     <meta name="keywords" content="Build For A Change, Makeathon, IEEE-VIT, VIT, University, Projects, Students">
     <title>Build For A Change | Desk</title>
     <link rel="icon" href="img/favicon.png">
-    <meta name="theme-color" content="#EEEEEE">
     <!-----------------------------Stylesheets---------------------------->
     <link rel="stylesheet" type="text/css" href="include/css/ui-lightness/jquery-ui-1.9.2.custom.min.css"/>
     <link rel="stylesheet" type="text/css" href="include/css/jquery.tagedit.css"/>
