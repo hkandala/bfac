@@ -37,6 +37,10 @@
                     <p>For technical assistance, we take aid from professionals and mentors who are heavily inclined to work for a social cause and ameliorate the society.</p>
                     <p>Finally the projects are reviewed by NGOs and mentors, and are then taken up for further development by incubators who incorporate necessary quality assurance and provide enormous assistance.</p>
                     <p>The Incubators ensure maintenance of the prototype and provide required testing which then results prototype turning into a product ready to be introduced to the market. The underlying goal  for these prototypes is to be cost effective ,easily available and be of assured quality to the NGOs for extensive use.</p>
+                	<h2>What Make a thon is?</h2>
+                	<p>Make-a-thon is the flagship event of IEEE-VIT. It is a socially assistive hackathon that provides college students a platform to ideate, create and prototype solutions to real world problems. Young engineers from multiple disciplines and technical backgrounds come together for this 30 hour endeavour to Build For A Change.</p>
+                	<h2>How Make a thon helps?</h2>
+                	<p>Make-a-Thon realizes the true concept of giving back to the society, It is using our skill sets to make prototypes for socially assistive problems that can aid a million lives.</p>
                 </div>
             </div>
         </div>
