@@ -2,7 +2,7 @@
     ob_start();
     require_once './include/php/connect.php';
     require_once 'UserClass.php';
-	require_once 'lib/password.php' ;
+	require_once 'include/php/password.php';
     session_start();
     $user = $_POST['email'];
     $pass = $_POST['password'];

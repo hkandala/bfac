@@ -1,7 +1,7 @@
 <?php
     require_once 'include/php/connect.php';
     require_once 'UserClass.php';
-	require_once 'lib/password.php';
+	require_once 'include/php/password.php';
     session_start();
     $name = $_POST['name'];
     $email = $_POST['email'];
