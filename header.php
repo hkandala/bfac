@@ -4,11 +4,11 @@
 
     $className = "";
     if($pageName == "index.php") {
-        global $className;
         $className = "index";
     } else if ($pageName == "desking.php") {
-        global $className;
         $className = "desk";
+    } else if($pageName == "detailsForm.php") {
+        $className = "detailsForm";
     }
 
     if(!isset($_SESSION['curUser'])) {
@@ -110,7 +110,7 @@
         ');
     }
 
-    if($GLOBALS['pageName'] === "index.php") {
+    if($pageName === "index.php") {
         echo('
                 <div class="menu">
                     <ul>
@@ -131,7 +131,7 @@
             </header>
             <main class="z-depth-1-half ' . $className . '">
         ');
-    } else if($GLOBALS['pageName'] === "desking.php") {
+    } else if($pageName === "desking.php") {
         echo('
                 <div class="menu">
                     <ul>
@@ -161,6 +161,27 @@
                         <div class="feedback"></div>
                         <div class="btn-flat green"><p class="hide-on-small-and-down">Cancel</p><i class="mdi-content-clear hide-on-med-and-up"></i></div>
                         <div class="btn-flat red"><p class="hide-on-small-and-down">Delete</p><i class="mdi-action-done hide-on-med-and-up"></i></div>
+                    </div>
+                </div>
+            </header>
+            <main class="z-depth-1-half ' . $className . '">
+        ');
+    } else if($pageName == 'detailsForm.php') {
+        echo('
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <a href="desking.php" class="selected"><i class="mdi-action-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a href = "aboutus.php"><i class="mdi-action-assignment-ind"></i> <span>About Us</span></a>
+                        </li>
+                        <li>
+                            <a href = "#contactUs" class="modal-trigger contactUsTrigger"><i class="mdi-communication-textsms"></i> <span>Contact Us</span></a>
+                        </li>
+                    </ul>
+                    <div class="madeWith">
+                        <p>Made with <span><i class="mdi-action-favorite"></i></span> by IEEE - VIT Team</p>
                     </div>
                 </div>
             </header>
