@@ -656,12 +656,25 @@ main.index {
         position: relative;
         height: 150px;
         img {
-          height: 60px;
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-
+        }
+        &.clabs {
+          img {
+            height: 90px;
+          }
+        }
+        &.ieee {
+          img {
+            height: 60px;
+          }
+        }
+        &.vit {
+          img {
+            height: 70px;
+          }
         }
       }
     } 
@@ -1133,15 +1146,16 @@ main.detailsForm  {
       }
     }
   }
-}
-.confirmation {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #263238;
-  text-align: center;
-  margin-top: 100px;
-  padding: 30px;
+  .confirmation {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #263238;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 30px;
+  }
 }
 /*---------------------------------------------------------*/
 

@@ -86,10 +86,13 @@
     <div class="organizers-wrapper">
         <div class="organizers z-depth-1">
             <h2>In collaboration with</h2>
-            <div class="col l6 s12">
+            <div class="col l4 s12 clabs">
+                <img src="img/logos/clabslogo.png" alt="Creation Labs">
+            </div>
+            <div class="col l4 s12 ieee">
                 <img src="img/logos/ieeevitlogo.png" alt="IEEE-VIT">
             </div>
-            <div class="col l6 s12">
+            <div class="col l4 s12 vit">
                 <img src="img/logos/vitlogo.png" alt="VIT">
             </div>
         </div>
