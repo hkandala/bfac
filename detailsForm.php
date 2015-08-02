@@ -22,55 +22,64 @@
 <body>
 <?php
     require_once "header.php";
-?>
+    $checkQuery  = $GLOBALS['db']->raw('SELECT user_id FROM additional_details WHERE user_id=' . $curUser->id);
+    $check = $checkQuery->fetch_assoc();
+    if($check) {
+        echo '
+            <div class="confirmation">
+                <p>You have successfully registered to makeathon. Please check our facebook page to stay in touch.</p>
+            </div>
+        ';
+    } else {
+        echo '
+            <div class="form-container card-panel">
+                <h2>A few more details that we need...</h2>
+                <form class="details-form" action="detailsFormCheck.php" method="post">
+                    <div class="col twelve">
+                        <div class="input-field">
+                            <i class="mdi-action-assessment prefix"></i>
+                            <input type="text" name="no_of_hacks" id="no_of_hacks" class="validate"/>
+                            <label for="no_of_hacks">Number of hacks you have previously attended</label>
+                        </div>
+                    </div>
+                    <div class="col twelve">
+                        <div class="input-field">
+                            <i class="mdi-action-speaker-notes prefix"></i>
+                            <textarea name="hack_desc" id="hack_desc" class="validate materialize-textarea"></textarea>
+                            <label for = "hack_desc">Description and role you played for the hacks that you attended</label>
+                        </div>
+                    </div>
+                    <div class="col twelve">
+                        <div class="input-field">
+                            <i class="mdi-communication-chat prefix"></i>
+                            <textarea name="past_proj" id="past_proj" class="validate materialize-textarea"></textarea>
+                            <label for = "past_proj">Past projects description and your role</label>
+                        </div>
+                    </div>
+                    <div class="col twelve">
+                        <div class="input-field">
+                            <i class="mdi-action-announcement prefix"></i>
+                            <textarea name="ideas" id="ideas" class="validate materialize-textarea"></textarea>
+                            <label for = "ideas">Your idea for a socially assistive technology</label>
+                        </div>
+                    </div>
+                    <div class="col twelve">
+                        <div class="input-field">
+                            <i class="mdi-communication-comment prefix"></i>
+                            <input type="text" name="spec" id="spec" length="20" class="validate"/>
+                            <label for = "spec">Specialization ( Web Dev / App Dev / Design etc. )</label>
+                        </div>
+                    </div>
+                    <div class="col twelve">
+                        <div class="input-field center-align">
+                            <input type="submit" class="btn-large" value="Submit Details"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        ';
+    }
 
-<div class="form-container card-panel">
-    <h2>A few more details that we need...</h2>
-    <form class="details-form" action="detailsFormCheck.php" method="post">
-        <div class="col twelve">
-            <div class="input-field">
-                <i class="mdi-action-assessment prefix"></i>
-                <input type="text" name="no_of_hacks" id="no_of_hacks" class="validate"/>
-                <label for="no_of_hacks">Number of hacks you have previously attended</label>
-            </div>
-        </div>
-        <div class="col twelve">
-            <div class="input-field">
-                <i class="mdi-action-speaker-notes prefix"></i>
-                <textarea name="hack_desc" id="hack_desc" class="validate materialize-textarea"></textarea>
-                <label for = "hack_desc">Description and role you played for the hacks that you attended</label>
-            </div>
-        </div>
-        <div class="col twelve">
-            <div class="input-field">
-                <i class="mdi-communication-chat prefix"></i>
-                <textarea name="past_proj" id="past_proj" class="validate materialize-textarea"></textarea>
-                <label for = "past_proj">Past projects description and your role</label>
-            </div>
-        </div>
-        <div class="col twelve">
-            <div class="input-field">
-                <i class="mdi-action-announcement prefix"></i>
-                <textarea name="ideas" id="ideas" class="validate materialize-textarea"></textarea>
-                <label for = "ideas">Your idea for a socially assistive technology</label>
-            </div>
-        </div>
-        <div class="col twelve">
-            <div class="input-field">
-                <i class="mdi-communication-comment prefix"></i>
-                <input type="text" name="spec" id="spec" length="20" class="validate"/>
-                <label for = "spec">Specialization ( Web Dev / App Dev / Design etc. )</label>
-            </div>
-        </div>
-        <div class="col twelve">
-            <div class="input-field center-align">
-                <input type="submit" class="btn-large" value="Submit Details"/>
-            </div>
-        </div>
-    </form>
-</div>
-
-<?php
     require_once "footer.php" ;
 ?>
 
