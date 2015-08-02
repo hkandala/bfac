@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2015 at 03:34 PM
+-- Generation Time: Aug 02, 2015 at 11:25 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `bfac`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `additional_details`
+--
+
+CREATE TABLE IF NOT EXISTS `additional_details` (
+  `user_id` int(11) NOT NULL,
+  `no_of_hacks` int(2) NOT NULL,
+  `hack_desc` varchar(1000) NOT NULL,
+  `past_proj` varchar(1000) NOT NULL,
+  `ideas` varchar(1000) NOT NULL,
+  `spec` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -303,6 +318,12 @@ CREATE TABLE IF NOT EXISTS `user_thread` (
 --
 
 --
+-- Indexes for table `additional_details`
+--
+ALTER TABLE `additional_details`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- Indexes for table `challenges`
 --
 ALTER TABLE `challenges`
@@ -454,6 +475,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `additional_details`
+--
+ALTER TABLE `additional_details`
+ADD CONSTRAINT `bfac_user_details` FOREIGN KEY (`user_id`) REFERENCES `users` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `challenge_issue`
